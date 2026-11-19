@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GrillMaster | Western Delights</title>
+  <title>Western & Grill | Digital Menu</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
@@ -12,100 +12,79 @@
   <!-- Toast Notification -->
   <div id="toastContainer" class="toast-container"></div>
 
-  <!-- Bar Atas -->
-  <div class="top-info-bar">
-    <div class="info-container">
-      <span>📍 Address: 12 Jln Tunku, KL</span>
-      <span>📞 Tel: 03-1234 5678</span>
-      <span>⏰ Mon-Sat 11am-10pm</span>
+  <div class="app-frame">
+    
+    <!-- SIDEBAR KIRI (DARK BROWN) -->
+    <aside class="sidebar">
+      <div class="brand-box">
+        <div class="brand-circle-logo">
+          <!-- Ikon Topi Chef & Sudu Garfu -->
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#472210" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z"/>
+            <line x1="6" y1="17" x2="18" y2="17"/>
+          </svg>
+        </div>
+        <div class="brand-title">
+          <span>Western</span>
+          <span>& Grill</span>
+        </div>
+      </div>
+
+      <nav class="category-menu" id="categoryMenu">
+        <button class="cat-btn active" data-category="MAIN COURSE">MAIN COURSE</button>
+        <button class="cat-btn" data-category="PASTA & SPAGHETTI">PASTA & SPAGHETTI</button>
+        <button class="cat-btn" data-category="SIDES">SIDES</button>
+        <button class="cat-btn" data-category="COMBO">COMBO</button>
+      </nav>
+    </aside>
+
+    <!-- BAHAGIAN KANAN (TOP BAR + KANDUNGAN PUTIH) -->
+    <div class="right-section">
+      
+      <!-- Top Bar (Tel & Waktu Operasi) -->
+      <header class="top-bar">
+        <div class="top-info">
+          <span>Tel : 012-3445678</span>
+          <span class="time-info">
+            <span class="clock-dot">🕒</span> Mon-Sat 11am-10pm
+          </span>
+        </div>
+      </header>
+
+      <!-- Tetingkap Putih Menu -->
+      <main class="content-window">
+        <!-- Butang Troli Bulat di Penjuru Kanan Atas -->
+        <button class="floating-cart-btn" id="openCartBtn" title="View Cart">
+          🛒
+          <span class="cart-badge" id="cartBadge">0</span>
+        </button>
+
+        <h1 class="category-heading" id="categoryHeading">MAIN COURSE</h1>
+
+        <!-- Grid Kad Makanan (4 Kolum) -->
+        <div class="menu-grid" id="menuGrid">
+          <!-- Dijana secara automatik oleh script.js -->
+        </div>
+      </main>
+
     </div>
+
   </div>
 
-  <!-- Header Utama (OUR STORY dibuang) -->
-  <header class="main-header">
-    <div class="header-content">
-      <div class="brand-logo">
-        <span class="logo-icon">🥩</span>
-        <div class="brand-text">
-          <h1>GRILLMASTER</h1>
-          <p>WESTERN DELIGHTS</p>
-        </div>
-      </div>
-
-      <nav class="nav-links">
-        <a href="#" class="active">HOME</a>
-        <a href="#menuSection">MENU</a>
-        <a href="#contactSection">CONTACT</a>
-        <button id="orderNowBtn" class="order-now-btn">ORDER NOW</button>
-      </nav>
-    </div>
-  </header>
-
-  <!-- Kandungan Utama Menu -->
-  <main class="main-container" id="menuSection">
-    
-    <div class="section-title-box">
-      <h2>SIGNATURE WESTERN FAVORITES</h2>
-    </div>
-
-    <div class="menu-grid" id="menuGrid">
-      <!-- Dijana secara dinamik oleh script.js -->
-    </div>
-
-  </main>
-
-  <!-- =========================================
-       SEKSYEN CONTACT (ADA BANNER, LOGO, INFO & WHATSAPP)
-       ========================================= -->
-  <section id="contactSection" class="contact-section-wrapper">
-    <div class="contact-banner">
-      <div class="banner-overlay">
-        <h2>Hubungi & Kunjungi Kami</h2>
-        <p>Nikmati hidangan barat yang lazat dan segar setiap hari bersama keluarga!</p>
-      </div>
-    </div>
-
-    <div class="contact-card-container">
-      <div class="contact-shop-box">
-        <div class="shop-logo-large">🥩</div>
-        <h3>GrillMaster Western Delights</h3>
-        <p class="shop-location">📍 Lot 12, Ground Floor, Jalan Tunku, 50480 Kuala Lumpur.</p>
-        <p class="shop-desc">Restoran western halal pilihan ramai di tengah ibu kota KL. Menyediakan hidangan lamb chop, chicken chop, dan pasta terbaik!</p>
-        
-        <div class="contact-actions">
-          <a href="https://wa.me/60128655181?text=Hi%20GrillMaster,%20saya%20nak%20tanya%20pasal%20kedai..." target="_blank" class="whatsapp-direct-btn">
-            💬 Chat Terus di WhatsApp
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="main-footer">
-    <div class="footer-content">
-      <div class="footer-links-left">
-        <a href="#">Terms</a>
-        <a href="#">Privacy</a>
-      </div>
-      <div class="footer-social">
-        <span>Follow Us: Facebook 📘 📷</span>
-      </div>
-      <div class="footer-copy">
-        GrillMaster Western Delights &copy; 2026
-      </div>
-      <div class="footer-cart-summary">
-        Shopping Cart: <span id="footerCartCount">0 Item</span> (<span id="footerCartTotal">RM 0.00</span>)
-        <button class="view-cart-link" onclick="openCart()">View Cart</button>
-      </div>
+  <!-- FOOTER BAWAH (SOCIAL MEDIA) -->
+  <footer class="bottom-bar">
+    <div class="footer-inner">
+      <span>Facebook : Western & Grill</span>
+      <span>Instagram : WesternGrill.co</span>
+      <span>Thread : Western & Grill by nana</span>
     </div>
   </footer>
 
-  <!-- Slide-out Cart Drawer -->
+  <!-- SLIDE-OUT CART DRAWER -->
   <div id="cartOverlay" class="cart-overlay"></div>
   <aside id="cartDrawer" class="cart-drawer">
     <div class="cart-drawer-header">
-      <h3>🛒 Your Shopping Cart</h3>
+      <h3>🛒 Pesanan Anda</h3>
       <button id="closeCartBtn" class="close-btn">&times;</button>
     </div>
 
@@ -113,24 +92,24 @@
 
     <div class="cart-drawer-footer">
       <div class="form-group">
-        <label for="custName">Customer Name *</label>
-        <input type="text" id="custName" placeholder="Enter your name" />
+        <label for="custName">Nama Pelanggan *</label>
+        <input type="text" id="custName" placeholder="Masukkan nama anda" />
 
-        <label for="orderType">Order Type</label>
+        <label for="orderType">Jenis Pesanan</label>
         <select id="orderType">
-          <option value="Dine-In">Dine-In at Restaurant</option>
-          <option value="Takeaway / Self-Pickup">Takeaway / Self-Pickup</option>
+          <option value="Dine-In">Dine-In (Makan di Kedai)</option>
+          <option value="Takeaway / Self-Pickup">Takeaway / Bungkus</option>
           <option value="Delivery (+RM3.00)">Delivery (+RM3.00)</option>
         </select>
       </div>
 
       <div class="total-row">
-        <span>Total Amount</span>
+        <span>Jumlah Keseluruhan</span>
         <strong id="cartTotal">RM 0.00</strong>
       </div>
 
       <button id="checkoutBtn" class="whatsapp-checkout-btn">
-        Send Order to WhatsApp 💬
+        Hantar Order ke WhatsApp 💬
       </button>
     </div>
   </aside>
