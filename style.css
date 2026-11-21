@@ -351,31 +351,30 @@ body {
   padding: 16px 24px;
 }
 
-/* Bahagian Footer Troli (Diberikan Padding Kiri & Kanan yang Luas) */
 .cart-drawer-footer {
-  padding: 20px 24px;
+  padding: 20px 24px; /* Jarak selamat (padding) kiri dan kanan */
   background: #f9fafb;
   border-top: 1px solid #e7e5e4;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 
-.form-group {
+.cart-drawer-footer .form-group {
   display: flex;
   flex-direction: column;
   gap: 6px;
   width: 100%;
 }
 
-.form-group label {
+.cart-drawer-footer .form-group label {
   font-size: 0.78rem;
   font-weight: 700;
   color: #1c1917;
 }
 
-.form-group input, 
-.form-group select {
+.cart-drawer-footer .form-group input, 
+.cart-drawer-footer .form-group select {
   width: 100%;
   padding: 10px 14px;
   border: 1px solid #d6d3d1;
@@ -385,7 +384,7 @@ body {
   background-color: #ffffff;
 }
 
-.total-row {
+.cart-drawer-footer .total-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -393,10 +392,9 @@ body {
   font-weight: 700;
   padding-top: 8px;
   border-top: 1px dashed #d6d3d1;
-  margin-top: 4px;
 }
 
-.whatsapp-checkout-btn {
+.cart-drawer-footer .whatsapp-checkout-btn {
   width: 100%;
   background: #16a34a;
   color: #ffffff;
@@ -407,7 +405,6 @@ body {
   font-size: 0.9rem;
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(22, 163, 74, 0.2);
-  transition: background-color 0.2s, transform 0.1s;
 }
 
 .whatsapp-checkout-btn:hover {
