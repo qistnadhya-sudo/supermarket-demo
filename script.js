@@ -1,5 +1,4 @@
 const menuData = [
-  // MAIN COURSE
   {
     id: 1,
     category: "MAIN COURSE",
@@ -28,8 +27,6 @@ const menuData = [
     price: 15.90,
     img: "https://images.unsplash.com/photo-1579208575657-c595a05383b7?auto=format&fit=crop&w=500&q=80"
   },
-
-  // SPAGHETTI & PASTA
   {
     id: 5,
     category: "SPAGHETTI & PASTA",
@@ -51,8 +48,6 @@ const menuData = [
     price: 18.50,
     img: "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?auto=format&fit=crop&w=500&q=80"
   },
-
-  // SIDES
   {
     id: 8,
     category: "SIDES",
@@ -74,8 +69,6 @@ const menuData = [
     price: 10.90,
     img: "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=500&q=80"
   },
-
-  // COMBO
   {
     id: 11,
     category: "COMBO",
@@ -95,6 +88,10 @@ const menuData = [
 let activeCategory = "ALL";
 let cart = [];
 const SELLER_PHONE = "60123456789"; // Tukar nombor WhatsApp anda
+
+// Sambungan Fail Audio Sebenar (Letakkan fail bg-music.mp3 dalam folder yang sama)
+const backgroundAudio = new Audio('bg-music.mp3');
+backgroundAudio.loop = true;
 
 function renderMenu() {
   const grid = document.getElementById("menuGrid");
@@ -209,7 +206,7 @@ function showCenterToast(title) {
 
   const toast = document.createElement("div");
   toast.className = "toast-item";
-  toast.innerHTML = `<span>🟢</span> <span><strong>${title}</strong> ditambah!</span>`;
+  toast.innerHTML = `<span>🟢</span> <span><strong>${title}</strong></span>`;
   container.appendChild(toast);
 
   setTimeout(() => {
@@ -218,6 +215,39 @@ function showCenterToast(title) {
     toast.style.transition = "all 0.2s ease";
     setTimeout(() => toast.remove(), 200);
   }, 1600);
+}
+
+// Kawalan Butang Play Footer Bawah
+const playMainBtn = document.querySelector(".play-main-btn");
+let isPlaying = false;
+
+if (playMainBtn) {
+  playMainBtn.addEventListener("click", () => {
+    isPlaying = !isPlaying;
+    if (isPlaying) {
+      backgroundAudio.play().then(() => {
+        playMainBtn.innerHTML = `
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#000000">
+            <rect x="6" y="4" width="4" height="16"></rect>
+            <rect x="14" y="4" width="4" height="16"></rect>
+          </svg>
+        `;
+        showCenterToast("Playing background music 🎶");
+      }).catch(err => {
+        console.log("Audio play error:", err);
+        showCenterToast("Sila masukkan fail bg-music.mp3");
+        isPlaying = false;
+      });
+    } else {
+      backgroundAudio.pause();
+      playMainBtn.innerHTML = `
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#000000">
+          <polygon points="5 3 19 12 5 21 5 3"></polygon>
+        </svg>
+      `;
+      showCenterToast("Music paused");
+    }
+  });
 }
 
 const cartDrawer = document.getElementById("cartDrawer");
@@ -287,31 +317,5 @@ document.getElementById("checkoutBtn").addEventListener("click", () => {
 
   window.open(`https://wa.me/${SELLER_PHONE}?text=${encodeURIComponent(msg)}`, "_blank");
 });
-
-// Fungsi Interaktif Player Footer di Bawah
-const playMainBtn = document.querySelector(".play-main-btn");
-let isPlaying = false;
-
-if (playMainBtn) {
-  playMainBtn.addEventListener("click", () => {
-    isPlaying = !isPlaying;
-    if (isPlaying) {
-      playMainBtn.innerHTML = `
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="#000000">
-          <rect x="6" y="4" width="4" height="16"></rect>
-          <rect x="14" y="4" width="4" height="16"></rect>
-        </svg>
-      `;
-      showCenterToast("Vibes On! 🎶 Selamat menjamu selera");
-    } else {
-      playMainBtn.innerHTML = `
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="#000000">
-          <polygon points="5 3 19 12 5 21 5 3"></polygon>
-        </svg>
-      `;
-      showCenterToast("Player dijeda");
-    }
-  });
-}
 
 renderMenu();
