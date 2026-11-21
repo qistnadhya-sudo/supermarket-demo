@@ -6,7 +6,7 @@
 
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  background-color: #fcf5ed; /* Latar krim lembut macam rujukan */
+  background-color: #fcf5ed;
   color: #3d2314;
   min-height: 100vh;
   display: flex;
@@ -32,9 +32,9 @@ body {
 .toast-item {
   background: rgba(61, 35, 20, 0.96);
   color: #ffffff;
-  padding: 12px 20px;
+  padding: 12px 22px;
   border-radius: 14px;
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   font-weight: 700;
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
   border: 2px solid #f7c348;
@@ -57,104 +57,172 @@ body {
 }
 
 /* =========================================
-   PEMBUNGKUS UTAMA (CENTERED LAYOUT)
+   PEMBUNGKUS UTAMA
    ========================================= */
 .page-wrapper {
   flex: 1;
   width: 100%;
-  max-width: 900px; /* Kemas di phone dan juga desktop */
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 20px 16px 36px 16px;
+  padding: 28px 32px 40px 32px;
 }
 
 /* =========================================
-   HEADER (LOGO TENGAH, CART KANAN)
+   HEADER DESKTOP (SEBELAH-MENYEBELAH)
    ========================================= */
-.main-header {
+.top-section {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
+  gap: 32px;
+  margin-bottom: 32px;
 }
 
-.header-spacer {
-  width: 44px;
+/* Kumpulan Kiri Desktop: Logo Atas + 5 Kategori Bulat Bawah */
+.left-header-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
 }
 
-.brand-center {
+.brand-row {
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+}
+
+.mobile-spacer,
+.mobile-cart-btn {
+  display: none;
+}
+
+.brand-logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
 }
 
 .cat-logo-circle {
-  width: 44px;
-  height: 44px;
+  width: 56px;
+  height: 56px;
   background-color: #ffffff;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(92, 45, 22, 0.08);
+  box-shadow: 0 3px 10px rgba(92, 45, 22, 0.08);
 }
 
 .brand-script {
   display: flex;
   flex-direction: column;
   font-family: 'Caveat', cursive;
-  font-size: 1.85rem;
+  font-size: 2.3rem;
   line-height: 0.85;
   color: #6b3e26;
 }
 
-.cart-circle-btn {
-  width: 44px;
-  height: 44px;
+/* 5 Ikon Kategori Bulat */
+.category-bar {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.cat-circle-btn {
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.icon-ring {
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
   background-color: #f6e1ce;
-  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 1.65rem;
+  transition: all 0.2s ease;
+}
+
+.cat-circle-btn.active .icon-ring {
+  background-color: #f7c348;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(247, 195, 72, 0.45);
+}
+
+.cat-circle-btn span {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #4a2c1a;
+  text-align: center;
+}
+
+/* Kumpulan Kanan Desktop: Hero Banner + Cart Button */
+.right-banner-group {
+  flex: 1.15;
   position: relative;
+}
+
+.cart-circle-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background-color: #f6e1ce;
+  border: 2px solid #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+  box-shadow: 0 4px 12px rgba(92, 45, 22, 0.12);
   transition: transform 0.2s;
 }
 
+.desktop-cart-btn {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  z-index: 10;
+}
+
 .cart-circle-btn:hover {
-  transform: scale(1.06);
+  transform: scale(1.07);
 }
 
 .cart-badge {
   position: absolute;
-  top: -3px;
-  right: -3px;
+  top: -4px;
+  right: -4px;
   background-color: #e56020;
   color: #ffffff;
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 800;
-  width: 19px;
-  height: 19px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* =========================================
-   HERO BANNER (GOOD FOOD, GOOD MOOD...)
-   ========================================= */
+/* Hero Banner */
 .hero-banner {
   background: linear-gradient(135deg, #f8e4d2 0%, #f5dac3 100%);
-  border-radius: 18px;
-  padding: 20px 18px;
+  border-radius: 20px;
+  padding: 26px 28px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 24px;
-  box-shadow: 0 6px 18px rgba(139, 62, 27, 0.06);
-  overflow: hidden;
+  gap: 16px;
+  box-shadow: 0 6px 20px rgba(139, 62, 27, 0.06);
 }
 
 .hero-content {
@@ -162,11 +230,11 @@ body {
 }
 
 .hero-title {
-  font-size: 1.25rem;
+  font-size: 1.75rem;
   font-weight: 900;
-  line-height: 1.15;
-  letter-spacing: -0.3px;
-  margin-bottom: 8px;
+  line-height: 1.12;
+  letter-spacing: -0.4px;
+  margin-bottom: 10px;
 }
 
 .c-rust {
@@ -178,20 +246,20 @@ body {
 }
 
 .hero-subtitle {
-  font-size: 0.72rem;
+  font-size: 0.85rem;
   color: #5c3a28;
   line-height: 1.35;
-  max-width: 230px;
+  max-width: 290px;
   font-weight: 600;
 }
 
 .hero-image {
-  width: 125px;
-  height: 105px;
-  border-radius: 14px;
+  width: 185px;
+  height: 150px;
+  border-radius: 16px;
   overflow: hidden;
   flex-shrink: 0;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
 }
 
 .hero-image img {
@@ -201,65 +269,18 @@ body {
 }
 
 /* =========================================
-   5 IKON KATEGORI BULAT
-   ========================================= */
-.category-bar {
-  display: flex;
-  justify-content: space-between;
-  gap: 6px;
-  margin-bottom: 24px;
-}
-
-.cat-circle-btn {
-  background: none;
-  border: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  cursor: pointer;
-  flex: 1;
-}
-
-.icon-ring {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background-color: #f6e1ce;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.35rem;
-  transition: all 0.2s ease;
-}
-
-.cat-circle-btn.active .icon-ring {
-  background-color: #f7c348; /* Bulatan kuning aktif macam rujukan */
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(247, 195, 72, 0.45);
-}
-
-.cat-circle-btn span {
-  font-size: 0.62rem;
-  font-weight: 700;
-  color: #4a2c1a;
-  text-align: center;
-  line-height: 1.15;
-}
-
-/* =========================================
-   GRID KAD MENU (3 KOLUM OREN BATA)
+   GRID KAD MENU (6 KOLUM SEBARIS DI DESKTOP)
    ========================================= */
 .menu-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 kolum sebiji macam gambar */
-  gap: 12px;
+  grid-template-columns: repeat(6, 1fr); /* 6 kolum sebiji macam gambar desktop */
+  gap: 18px;
 }
 
 .menu-card {
-  background-color: #e56020; /* Warna oren bata macam kotak dalam gambar */
-  border-radius: 14px;
-  padding: 8px;
+  background-color: #e56020;
+  border-radius: 16px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -269,15 +290,15 @@ body {
 }
 
 .menu-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
 }
 
 .card-thumb {
   width: 100%;
   aspect-ratio: 1 / 1;
-  border-radius: 10px;
+  border-radius: 11px;
   overflow: hidden;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   background-color: #f8e4d2;
 }
 
@@ -288,10 +309,10 @@ body {
 }
 
 .card-name {
-  font-size: 0.74rem;
+  font-size: 0.84rem;
   font-weight: 800;
-  line-height: 1.2;
-  margin-bottom: 6px;
+  line-height: 1.25;
+  margin-bottom: 8px;
   color: #ffffff;
 }
 
@@ -304,7 +325,7 @@ body {
 }
 
 .card-price {
-  font-size: 0.72rem;
+  font-size: 0.8rem;
   font-weight: 800;
   color: #fff3e6;
 }
@@ -313,12 +334,12 @@ body {
   background-color: #ffffff;
   color: #e56020;
   border: none;
-  border-radius: 7px;
-  padding: 4px 8px;
-  font-size: 0.68rem;
+  border-radius: 8px;
+  padding: 5px 9px;
+  font-size: 0.72rem;
   font-weight: 800;
   cursor: pointer;
-  transition: background-color 0.2s, transform 0.15s;
+  transition: transform 0.15s;
 }
 
 .card-add-btn:active {
@@ -331,16 +352,18 @@ body {
 .main-footer {
   background-color: #e56020;
   color: #3d1c0a;
-  padding: 14px 18px;
+  padding: 14px 32px;
   margin-top: auto;
 }
 
 .footer-content {
-  max-width: 900px;
+  max-width: 1280px;
   margin: 0 auto;
-  font-size: 0.76rem;
+  display: flex;
+  align-items: center;
+  gap: 80px; /* Sebelah-menyebelah macam gambar desktop */
+  font-size: 0.85rem;
   font-weight: 700;
-  line-height: 1.45;
 }
 
 /* =========================================
@@ -523,47 +546,133 @@ body {
 }
 
 /* =========================================
-   RESPONSIF UNTUK SKRIN BESAR (DESKTOP)
+   PAPARAN KHAS TELEFON (MACAM GAMBAR KE-2)
    ========================================= */
-@media (min-width: 768px) {
-  .hero-banner {
-    padding: 28px 32px;
+@media (max-width: 820px) {
+  .page-wrapper {
+    padding: 18px 16px 32px 16px;
   }
 
-  .hero-title {
+  /* Ubah susunan header jadi menegak (display: contents supaya boleh susun semula urutan) */
+  .top-section {
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 20px;
+  }
+
+  .left-header-group {
+    display: contents; /* Pecahkan supaya Logo di atas Banner, Kategori di bawah Banner */
+  }
+
+  /* 1. Baris Logo Tengah + Cart Kanan */
+  .brand-row {
+    order: 1;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .mobile-spacer {
+    display: block;
+    width: 42px;
+  }
+
+  .mobile-cart-btn {
+    display: flex;
+    width: 42px;
+    height: 42px;
+    position: relative;
+  }
+
+  .desktop-cart-btn {
+    display: none;
+  }
+
+  .cat-logo-circle {
+    width: 44px;
+    height: 44px;
+  }
+
+  .brand-script {
     font-size: 1.85rem;
   }
 
+  /* 2. Hero Banner di Tengah */
+  .right-banner-group {
+    order: 2;
+    width: 100%;
+  }
+
+  .hero-banner {
+    padding: 18px 16px;
+    border-radius: 18px;
+  }
+
+  .hero-title {
+    font-size: 1.25rem;
+  }
+
   .hero-subtitle {
-    font-size: 0.88rem;
-    max-width: 340px;
+    font-size: 0.72rem;
+    max-width: 210px;
   }
 
   .hero-image {
-    width: 190px;
-    height: 150px;
+    width: 125px;
+    height: 105px;
+  }
+
+  /* 3. 5 Kategori Bulat di Bawah Banner */
+  .category-bar {
+    order: 3;
+    width: 100%;
+    justify-content: space-between;
+    gap: 6px;
   }
 
   .icon-ring {
-    width: 64px;
-    height: 64px;
-    font-size: 1.6rem;
+    width: 50px;
+    height: 50px;
+    font-size: 1.3rem;
   }
 
   .cat-circle-btn span {
-    font-size: 0.78rem;
+    font-size: 0.6rem;
+    line-height: 1.15;
   }
 
+  /* Grid Menu 3 Kolum Sebiji Macam Gambar Phone */
   .menu-grid {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .menu-card {
+    padding: 7px;
+    border-radius: 13px;
   }
 
   .card-name {
-    font-size: 0.88rem;
+    font-size: 0.72rem;
   }
 
   .card-price {
-    font-size: 0.85rem;
+    font-size: 0.68rem;
+  }
+
+  .card-add-btn {
+    padding: 4px 7px;
+    font-size: 0.65rem;
+  }
+
+  /* Footer Bertingkat di Phone */
+  .main-footer {
+    padding: 14px 16px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+    font-size: 0.76rem;
   }
 }

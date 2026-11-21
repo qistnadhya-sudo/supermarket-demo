@@ -11,100 +11,125 @@
 </head>
 <body>
 
-  <!-- Pop-up Notifikasi Tepat di Tengah Skrin -->
+  <!-- Pop-up Toast Tepat di Tengah Skrin -->
   <div id="toastContainer" class="toast-container"></div>
 
   <div class="page-wrapper">
     
-    <!-- HEADER ATAS -->
-    <header class="main-header">
-      <div class="header-spacer"></div>
+    <!-- BAHAGIAN ATAS (TOP SECTION: BERUBAH IKUT DESKTOP VS PHONE) -->
+    <header class="top-section">
       
-      <div class="brand-center">
-        <div class="cat-logo-circle">
-          <!-- Ikon Kucing Minimalis -->
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4a3b32" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 5c.67 0 1.35.09 2 .26 1.78-2 5.03-2.84 6.42-2.26 1.4.58-.42 7-.42 7 .57 1.07 1 2.24 1 3.44C21 17.9 16.97 21 12 21s-9-3-9-7.56c0-1.25.5-2.4 1-3.44 0 0-1.89-6.42-.5-7 1.39-.58 4.72.23 6.5 2.23A9.04 9.04 0 0 1 12 5Z"/>
-            <path d="M8 14v.5"/>
-            <path d="M16 14v.5"/>
-            <path d="M11.25 16.25h1.5L12 17l-.75-.75Z"/>
-          </svg>
+      <!-- Kumpulan Kiri (Desktop) / Atas (Phone): Logo + Kategori -->
+      <div class="left-header-group">
+        
+        <!-- Baris Logo & Butang Cart -->
+        <div class="brand-row">
+          <div class="mobile-spacer"></div>
+
+          <div class="brand-logo-wrap">
+            <div class="cat-logo-circle">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#4a3b32" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 5c.67 0 1.35.09 2 .26 1.78-2 5.03-2.84 6.42-2.26 1.4.58-.42 7-.42 7 .57 1.07 1 2.24 1 3.44C21 17.9 16.97 21 12 21s-9-3-9-7.56c0-1.25.5-2.4 1-3.44 0 0-1.89-6.42-.5-7 1.39-.58 4.72.23 6.5 2.23A9.04 9.04 0 0 1 12 5Z"/>
+                <path d="M8 14v.5"/>
+                <path d="M16 14v.5"/>
+                <path d="M11.25 16.25h1.5L12 17l-.75-.75Z"/>
+              </svg>
+            </div>
+            <div class="brand-script">
+              <span>Western</span>
+              <span>&amp; Grill</span>
+            </div>
+          </div>
+
+          <!-- Butang Cart untuk Phone -->
+          <button class="cart-circle-btn mobile-cart-btn" id="openCartBtnMobile" aria-label="Buka Troli">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5c2d16" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            <span class="cart-badge" id="cartBadgeMobile">0</span>
+          </button>
         </div>
-        <div class="brand-script">
-          <span>Western</span>
-          <span>&amp; Grill</span>
-        </div>
+
+        <!-- 5 Ikon Kategori Bulat -->
+        <nav class="category-bar" id="categoryBar">
+          <button class="cat-circle-btn active" data-category="ALL">
+            <div class="icon-ring">🍽️</div>
+            <span>All Menu</span>
+          </button>
+
+          <button class="cat-circle-btn" data-category="MAIN COURSE">
+            <div class="icon-ring">🥩</div>
+            <span>Main Course</span>
+          </button>
+
+          <button class="cat-circle-btn" data-category="PASTA & SPAGHETTI">
+            <div class="icon-ring">🍝</div>
+            <span>Pasta &amp; Spaghetti</span>
+          </button>
+
+          <button class="cat-circle-btn" data-category="SIDES">
+            <div class="icon-ring">🍟</div>
+            <span>Sides</span>
+          </button>
+
+          <button class="cat-circle-btn" data-category="COMBO">
+            <div class="icon-ring">🍔</div>
+            <span>Combo</span>
+          </button>
+        </nav>
+
       </div>
 
-      <button class="cart-circle-btn" id="openCartBtn" aria-label="Buka Troli">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5c2d16" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="9" cy="21" r="1"></circle>
-          <circle cx="20" cy="21" r="1"></circle>
-          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-        </svg>
-        <span class="cart-badge" id="cartBadge">0</span>
-      </button>
+      <!-- Kumpulan Kanan (Desktop) / Tengah (Phone): Hero Banner + Cart Desktop -->
+      <div class="right-banner-group">
+        
+        <!-- Butang Cart Terapung untuk Desktop -->
+        <button class="cart-circle-btn desktop-cart-btn" id="openCartBtnDesktop" aria-label="Buka Troli">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5c2d16" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span class="cart-badge" id="cartBadgeDesktop">0</span>
+        </button>
+
+        <!-- Hero Banner -->
+        <section class="hero-banner">
+          <div class="hero-content">
+            <h1 class="hero-title">
+              <span class="c-rust">GOOD FOOD,</span><br>
+              <span class="c-rust">GOOD MOOD,</span><br>
+              <span class="c-green">GREAT MEMORIES.</span>
+            </h1>
+            <p class="hero-subtitle">
+              Fresh ingredients, unique flavours, and unforgettable experiences.
+            </p>
+          </div>
+          <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=500&q=85" alt="Signature Burger">
+          </div>
+        </section>
+
+      </div>
+
     </header>
 
-    <!-- HERO BANNER -->
-    <section class="hero-banner">
-      <div class="hero-content">
-        <h1 class="hero-title">
-          <span class="c-rust">GOOD FOOD,</span><br>
-          <span class="c-rust">GOOD MOOD,</span><br>
-          <span class="c-green">GREAT MEMORIES.</span>
-        </h1>
-        <p class="hero-subtitle">
-          Fresh ingredients, unique flavours, and unforgettable experiences.
-        </p>
-      </div>
-      <div class="hero-image">
-        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=500&q=85" alt="Signature Burger">
-      </div>
-    </section>
-
-    <!-- 5 IKON KATEGORI BULAT -->
-    <nav class="category-bar" id="categoryBar">
-      <button class="cat-circle-btn active" data-category="ALL">
-        <div class="icon-ring">🍽️</div>
-        <span>All Menu</span>
-      </button>
-
-      <button class="cat-circle-btn" data-category="MAIN COURSE">
-        <div class="icon-ring">🥩</div>
-        <span>Main Course</span>
-      </button>
-
-      <button class="cat-circle-btn" data-category="PASTA & SPAGHETTI">
-        <div class="icon-ring">🍝</div>
-        <span>Pasta &amp; Spaghetti</span>
-      </button>
-
-      <button class="cat-circle-btn" data-category="SIDES">
-        <div class="icon-ring">🍟</div>
-        <span>Sides</span>
-      </button>
-
-      <button class="cat-circle-btn" data-category="COMBO">
-        <div class="icon-ring">🍔</div>
-        <span>Combo</span>
-      </button>
-    </nav>
-
-    <!-- GRID KAD MENU (3 KOLUM SEBARIS MACAM GAMBAR) -->
+    <!-- GRID KAD MENU (6 KOLUM DESKTOP / 3 KOLUM PHONE) -->
     <main class="menu-section">
       <div class="menu-grid" id="menuGrid">
-        <!-- Kad menu akan dijana oleh script.js -->
+        <!-- Dijana oleh script.js -->
       </div>
     </main>
 
   </div>
 
-  <!-- FOOTER OREN PENUH DI BAWAH -->
+  <!-- FOOTER OREN DI BAWAH -->
   <footer class="main-footer">
     <div class="footer-content">
-      <p>Instagram : WesternGrill.co</p>
-      <p>Facebook : Western &amp; Grill</p>
+      <span>Instagram : WesternGrill.co</span>
+      <span>Facebook : Western &amp; Grill</span>
     </div>
   </footer>
 

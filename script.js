@@ -44,38 +44,59 @@ const menuData = [
     price: 13.90,
     img: "https://images.unsplash.com/photo-1622973536968-3ead9e780960?auto=format&fit=crop&w=500&q=80"
   },
+  {
+    id: 7,
+    category: "PASTA & SPAGHETTI",
+    name: "Aglio Olio Seafood",
+    price: 18.50,
+    img: "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?auto=format&fit=crop&w=500&q=80"
+  },
 
   // SIDES
   {
-    id: 7,
+    id: 8,
     category: "SIDES",
     name: "Cheesy Wedges",
     price: 7.50,
     img: "https://images.unsplash.com/photo-1576107232684-1279f390859f?auto=format&fit=crop&w=500&q=80"
   },
   {
-    id: 8,
+    id: 9,
     category: "SIDES",
-    name: "Mushroom Soup & Bread",
+    name: "Mushroom Soup",
     price: 8.90,
     img: "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    id: 10,
+    category: "SIDES",
+    name: "Crispy Calamari",
+    price: 10.90,
+    img: "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=500&q=80"
   },
 
   // COMBO
   {
-    id: 9,
+    id: 11,
     category: "COMBO",
     name: "Family Talam Grill",
     price: 59.90,
     img: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    id: 12,
+    category: "COMBO",
+    name: "Couple Platter",
+    price: 38.90,
+    img: "https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=500&q=80"
   }
 ];
 
 let activeCategory = "ALL";
 let cart = [];
-const SELLER_PHONE = "60123456789"; // Tukar nombor WhatsApp anda
+const SELLER_PHONE = "60123456789"; // Tukar kepada nombor WhatsApp anda
 
-// Papar Menu Berdasarkan Kategori
+// Papar Menu
 function renderMenu() {
   const grid = document.getElementById("menuGrid");
   const filtered = activeCategory === "ALL"
@@ -135,7 +156,7 @@ function changeQty(id, delta) {
   updateCart();
 }
 
-// Kemas Kini Troli
+// Kemas Kini Troli (Desktop & Mobile Badge)
 function updateCart() {
   const totalQty = cart.reduce((sum, i) => sum + i.qty, 0);
   const subtotal = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
@@ -144,7 +165,8 @@ function updateCart() {
   const deliveryFee = orderType.includes("Luar Bandar") ? 5.00 : 0.00;
   const total = subtotal + deliveryFee;
 
-  document.getElementById("cartBadge").textContent = totalQty;
+  document.getElementById("cartBadgeDesktop").textContent = totalQty;
+  document.getElementById("cartBadgeMobile").textContent = totalQty;
 
   const cartItemsEl = document.getElementById("cartItems");
   if (cart.length === 0) {
@@ -192,16 +214,18 @@ function showCenterToast(title) {
 const cartDrawer = document.getElementById("cartDrawer");
 const cartOverlay = document.getElementById("cartOverlay");
 
-document.getElementById("openCartBtn").addEventListener("click", () => {
+function openCart() {
   cartDrawer.classList.add("open");
   cartOverlay.classList.add("open");
-});
+}
 
 function closeCart() {
   cartDrawer.classList.remove("open");
   cartOverlay.classList.remove("open");
 }
 
+document.getElementById("openCartBtnDesktop").addEventListener("click", openCart);
+document.getElementById("openCartBtnMobile").addEventListener("click", openCart);
 document.getElementById("closeCartBtn").addEventListener("click", closeCart);
 cartOverlay.addEventListener("click", closeCart);
 
