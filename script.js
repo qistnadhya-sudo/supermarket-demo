@@ -28,6 +28,24 @@ const menuItems = [
   { id: 18, category: "COMBO", title: "Family Feast Box (4 Pax)", price: 98.00, desc: "2 Chicken Chop, 1 Fish & Chips, 1 Carbonara, Sides & 4 Drinks.", img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=500&q=80" }
 ];
 
+// Buka / Tutup Cart Drawer
+const cartDrawer = document.getElementById("cartDrawer");
+const cartOverlay = document.getElementById("cartOverlay");
+
+function openCart() { 
+  cartDrawer.classList.add("open"); 
+  cartOverlay.classList.add("open"); 
+}
+
+function closeCart() { 
+  cartDrawer.classList.remove("open"); 
+  cartOverlay.classList.remove("open"); 
+}
+
+document.getElementById("openCartBtn").addEventListener("click", openCart);
+document.getElementById("closeCartBtn").addEventListener("click", closeCart);
+cartOverlay.addEventListener("click", closeCart);
+
 let currentCategory = "MAIN COURSE";
 let cart = [];
 

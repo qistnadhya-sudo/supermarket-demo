@@ -180,6 +180,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  pointer-events: none; /* <--- Tambah baris ini supaya butang boleh ditekan */
 }
 
 .category-heading {
