@@ -368,36 +368,46 @@ body {
 }
 
 .cart-drawer-footer {
-  padding: 16px 20px;
+  padding: 20px 24px;
   background: #f9fafb;
   border-top: 1px solid #e7e5e4;
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Jarak yang kemas antara setiap bahagian */
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  margin-bottom: 12px;
+  gap: 4px; /* Jarak dekat antara label dengan input kotak teks */
+  margin-bottom: 8px; /* Jarak antara setiap field input */
 }
 
 .form-group label {
   font-size: 0.78rem;
   font-weight: 700;
+  color: #292524;
 }
 
-.form-group input,
+.form-group input, 
 .form-group select {
-  padding: 8px 12px;
+  padding: 9px 12px;
   border: 1px solid #d6d3d1;
   border-radius: 6px;
   font-family: inherit;
+  font-size: 0.85rem;
+  background-color: #ffffff;
 }
 
 .total-row {
   display: flex;
   justify-content: space-between;
-  font-size: 1rem;
-  margin-bottom: 12px;
+  align-items: center;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding-top: 4px;
+  border-top: 1px dashed #d6d3d1;
+  margin-top: 4px;
 }
 
 .whatsapp-checkout-btn {
@@ -408,7 +418,16 @@ body {
   padding: 12px;
   border-radius: 8px;
   font-weight: 800;
+  font-size: 0.9rem;
   cursor: pointer;
+  margin-top: 4px;
+  box-shadow: 0 4px 6px rgba(22, 163, 74, 0.2);
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.whatsapp-checkout-btn:hover {
+  background: #15803d;
+  transform: translateY(-1px);
 }
 
 .toast-container {
