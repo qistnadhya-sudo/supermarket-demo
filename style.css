@@ -247,11 +247,13 @@ body {
 }
 
 .hero-subtitle {
-  font-size: 0.85rem;
+  font-family: 'Libre Baskerville', serif; /* Guna fon Libre Baskerville */
+  font-size: 0.78rem; /* Laraskan saiz jika perlu */
   color: #5c3a28;
-  line-height: 1.35;
+  line-height: 1.4;
   max-width: 290px;
-  font-weight: 600;
+  font-weight: 400; /* Boleh tukar ke 700 jika nak tebal */
+  font-style: italic; /* Pilihan: nampak lebih klasik & eksklusif dalam bentuk italic */
 }
 
 .hero-image {
