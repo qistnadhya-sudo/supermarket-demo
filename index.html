@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Western & Grill — Spotify Edition</title>
+  <title>Western & Grill — Spotify Player Edition</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Cinzel+Decorative:wght@700;900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -16,106 +16,73 @@
 
   <div class="page-wrapper">
     
-    <!-- BAHAGIAN ATAS (TOP SECTION) -->
-    <header class="top-section">
-      
-      <!-- Kumpulan Kiri (Desktop) / Atas (Phone): Logo + Kategori -->
-      <div class="left-header-group">
-        
-        <div class="brand-row">
-          <div class="mobile-spacer"></div>
-
-          <div class="brand-logo-wrap">
-            <div class="cat-logo-circle">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1DB954" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 5c.67 0 1.35.09 2 .26 1.78-2 5.03-2.84 6.42-2.26 1.4.58-.42 7-.42 7 .57 1.07 1 2.24 1 3.44C21 17.9 16.97 21 12 21s-9-3-9-7.56c0-1.25.5-2.4 1-3.44 0 0-1.89-6.42-.5-7 1.39-.58 4.72.23 6.5 2.23A9.04 9.04 0 0 1 12 5Z"/>
-                <path d="M8 14v.5"/>
-                <path d="M16 14v.5"/>
-                <path d="M11.25 16.25h1.5L12 17l-.75-.75Z"/>
-              </svg>
-            </div>
-            <div class="brand-script">
-              <span>Western</span>
-              <span>&amp; Grill</span>
-            </div>
-          </div>
-
-          <!-- Butang Cart untuk Phone -->
-          <button class="cart-circle-btn mobile-cart-btn" id="openCartBtnMobile" aria-label="Buka Troli">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="9" cy="21" r="1"></circle>
-              <circle cx="20" cy="21" r="1"></circle>
-              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-            </svg>
-            <span class="cart-badge" id="cartBadgeMobile">0</span>
-          </button>
-        </div>
-
-        <!-- 5 Ikon Kategori Bulat -->
-        <nav class="category-bar" id="categoryBar">
-          <button class="cat-circle-btn active" data-category="ALL">
-            <div class="icon-ring">🍽️</div>
-            <span>All Menu</span>
-          </button>
-
-          <button class="cat-circle-btn" data-category="MAIN COURSE">
-            <div class="icon-ring">🥩</div>
-            <span>Main Course</span>
-          </button>
-
-          <button class="cat-circle-btn" data-category="PASTA & SPAGHETTI">
-            <div class="icon-ring">🍝</div>
-            <span>Pasta &amp; Spaghetti</span>
-          </button>
-
-          <button class="cat-circle-btn" data-category="SIDES">
-            <div class="icon-ring">🍟</div>
-            <span>Sides</span>
-          </button>
-
-          <button class="cat-circle-btn" data-category="COMBO">
-            <div class="icon-ring">🍔</div>
-            <span>Combo</span>
-          </button>
-        </nav>
-
-      </div>
-
-      <!-- Kumpulan Kanan (Desktop) / Tengah (Phone): Hero Banner + Cart Desktop -->
-      <div class="right-banner-group">
-        
-        <!-- Butang Cart Terapung untuk Desktop -->
-        <button class="cart-circle-btn desktop-cart-btn" id="openCartBtnDesktop" aria-label="Buka Troli">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="9" cy="21" r="1"></circle>
-            <circle cx="20" cy="21" r="1"></circle>
-            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+    <!-- HEADER UTAMA -->
+    <header class="main-header">
+      <div class="brand-logo-wrap">
+        <div class="cat-logo-circle">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 5c.67 0 1.35.09 2 .26 1.78-2 5.03-2.84 6.42-2.26 1.4.58-.42 7-.42 7 .57 1.07 1 2.24 1 3.44C21 17.9 16.97 21 12 21s-9-3-9-7.56c0-1.25.5-2.4 1-3.44 0 0-1.89-6.42-.5-7 1.39-.58 4.72.23 6.5 2.23A9.04 9.04 0 0 1 12 5Z"/>
+            <path d="M8 14v.5"/>
+            <path d="M16 14v.5"/>
+            <path d="M11.25 16.25h1.5L12 17l-.75-.75Z"/>
           </svg>
-          <span class="cart-badge" id="cartBadgeDesktop">0</span>
-        </button>
-
-        <!-- Hero Banner (Tema Spotify Gradient) -->
-        <section class="hero-banner">
-          <div class="hero-content">
-            <h1 class="hero-title">
-              <span class="c-white">GOOD FOOD,</span><br>
-              <span class="c-white">GOOD MOOD,</span><br>
-              <span class="c-spotify">GREAT MEMORIES.</span>
-            </h1>
-            <p class="hero-subtitle">
-              Fresh ingredients, unique flavours, and unforgettable experiences.
-            </p>
-          </div>
-          <div class="hero-image">
-            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=500&q=85" alt="Signature Burger">
-          </div>
-        </section>
-
+        </div>
+        <div class="brand-script">
+          <span>Western</span>
+          <span>&amp; Grill</span>
+        </div>
       </div>
 
+      <!-- Butang Troli Kanan Atas -->
+      <button class="cart-circle-btn" id="openCartBtn" aria-label="Buka Troli">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        <span class="cart-badge" id="cartBadge">0</span>
+      </button>
     </header>
 
-    <!-- GRID KAD MENU (6 KOLUM DESKTOP / 3 KOLUM COMPACT PHONE) -->
+    <!-- HERO BANNER (PLAYER STYLE) -->
+    <section class="hero-banner">
+      <div class="hero-banner-inner">
+        <div class="hero-top-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#121212" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18V5l12-2v13"></path>
+            <circle cx="6" cy="18" r="3"></circle>
+            <circle cx="18" cy="16" r="3"></circle>
+          </svg>
+        </div>
+        <div class="order-now-pill">
+          <span>Order Now</span>
+          <div class="sound-wave">
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 IKON KATEGORI BULAT -->
+    <nav class="category-bar">
+      <button class="cat-pill-btn active" data-category="ALL">
+        <span>All Menu</span>
+      </button>
+      <button class="cat-pill-btn" data-category="MAIN COURSE">
+        <span>Main Course</span>
+      </button>
+      <button class="cat-pill-btn" data-category="SPAGHETTI & PASTA">
+        <span>Spaghetti &amp; Pasta</span>
+      </button>
+      <button class="cat-pill-btn" data-category="SIDES">
+        <span>Sides</span>
+      </button>
+      <button class="cat-pill-btn" data-category="COMBO">
+        <span>Combo</span>
+      </button>
+    </nav>
+
+    <!-- GRID KAD MENU (PLAYER CARD STYLE) -->
     <main class="menu-section">
       <div class="menu-grid" id="menuGrid">
         <!-- Dijana oleh script.js -->
@@ -124,11 +91,24 @@
 
   </div>
 
-  <!-- FOOTER HIJAU SPOTIFY DI BAWAH -->
-  <footer class="main-footer">
-    <div class="footer-content">
-      <span>Instagram : WesternGrill.co</span>
-      <span>Facebook : Western &amp; Grill</span>
+  <!-- PLAYER FOOTER BAR DI BAWAH -->
+  <footer class="player-footer">
+    <div class="footer-left">
+      <div class="f-track-icon">🎵</div>
+      <div class="f-track-info">
+        <span class="f-title">Western &amp; Grill</span>
+        <span class="f-sub">Now Playing...</span>
+      </div>
+    </div>
+    <div class="footer-center-play">
+      <button class="play-main-btn" aria-label="Play">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#000000"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+      </button>
+    </div>
+    <div class="footer-right">
+      <button class="footer-cart-pill" onclick="openCart()">
+        Semak Pesanan (<span id="footerCartCount">RM 0.00</span>)
+      </button>
     </div>
   </footer>
 

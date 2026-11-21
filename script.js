@@ -29,24 +29,24 @@ const menuData = [
     img: "https://images.unsplash.com/photo-1579208575657-c595a05383b7?auto=format&fit=crop&w=500&q=80"
   },
 
-  // PASTA & SPAGHETTI
+  // SPAGHETTI & PASTA
   {
     id: 5,
-    category: "PASTA & SPAGHETTI",
+    category: "SPAGHETTI & PASTA",
     name: "Spaghetti Carbonara",
     price: 14.90,
     img: "https://images.unsplash.com/photo-1612874742237-6526221588e3?auto=format&fit=crop&w=500&q=80"
   },
   {
     id: 6,
-    category: "PASTA & SPAGHETTI",
+    category: "SPAGHETTI & PASTA",
     name: "Spaghetti Bolognese",
     price: 13.90,
     img: "https://images.unsplash.com/photo-1622973536968-3ead9e780960?auto=format&fit=crop&w=500&q=80"
   },
   {
     id: 7,
-    category: "PASTA & SPAGHETTI",
+    category: "SPAGHETTI & PASTA",
     name: "Aglio Olio Seafood",
     price: 18.50,
     img: "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?auto=format&fit=crop&w=500&q=80"
@@ -94,7 +94,7 @@ const menuData = [
 
 let activeCategory = "ALL";
 let cart = [];
-const SELLER_PHONE = "60123456789"; // Tukar kepada nombor WhatsApp anda
+const SELLER_PHONE = "60123456789"; // Tukar nombor WhatsApp anda
 
 function renderMenu() {
   const grid = document.getElementById("menuGrid");
@@ -110,17 +110,33 @@ function renderMenu() {
         </div>
         <h3 class="card-name">${item.name}</h3>
       </div>
-      <div class="card-bottom">
-        <span class="card-price">RM ${item.price.toFixed(2)}</span>
-        <button class="card-add-btn" onclick="addToCart(${item.id})">+ Add</button>
+      <div class="card-player-controls">
+        <div class="progress-bar-wrap">
+          <div class="progress-fill"></div>
+          <div class="progress-thumb"></div>
+        </div>
+        <div class="player-btns-row">
+          <button class="mini-icon-btn">🔀</button>
+          <button class="mini-icon-btn">⏮</button>
+          <button class="card-add-circle" onclick="addToCart(${item.id})" aria-label="Add to Cart">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+          </button>
+          <button class="mini-icon-btn">⏭</button>
+          <button class="mini-icon-btn">🔁</button>
+        </div>
+        <div class="card-price-label">RM ${item.price.toFixed(2)}</div>
       </div>
     </div>
   `).join("");
 }
 
-document.querySelectorAll(".cat-circle-btn").forEach(btn => {
+document.querySelectorAll(".cat-pill-btn").forEach(btn => {
   btn.addEventListener("click", () => {
-    document.querySelectorAll(".cat-circle-btn").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".cat-pill-btn").forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
     activeCategory = btn.getAttribute("data-category");
     renderMenu();
@@ -160,8 +176,8 @@ function updateCart() {
   const deliveryFee = orderType.includes("Luar Bandar") ? 5.00 : 0.00;
   const total = subtotal + deliveryFee;
 
-  document.getElementById("cartBadgeDesktop").textContent = totalQty;
-  document.getElementById("cartBadgeMobile").textContent = totalQty;
+  document.getElementById("cartBadge").textContent = totalQty;
+  document.getElementById("footerCartCount").textContent = `RM ${total.toFixed(2)}`;
 
   const cartItemsEl = document.getElementById("cartItems");
   if (cart.length === 0) {
@@ -217,8 +233,7 @@ function closeCart() {
   cartOverlay.classList.remove("open");
 }
 
-document.getElementById("openCartBtnDesktop").addEventListener("click", openCart);
-document.getElementById("openCartBtnMobile").addEventListener("click", openCart);
+document.getElementById("openCartBtn").addEventListener("click", openCart);
 document.getElementById("closeCartBtn").addEventListener("click", closeCart);
 cartOverlay.addEventListener("click", closeCart);
 
