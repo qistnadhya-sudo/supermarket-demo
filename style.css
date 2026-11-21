@@ -142,7 +142,7 @@ body {
 }
 
 .card-content {
-  padding: 16px; /* Tambah jarak sekeliling supaya teks tidak terlanggar tepi kotak */
+  padding: 24px; /* Tambah jarak sekeliling supaya teks tidak terlanggar tepi kotak */
   display: flex;
   flex-direction: column;
   flex-grow: 1;
