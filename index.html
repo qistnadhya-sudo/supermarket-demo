@@ -11,6 +11,9 @@
 </head>
 <body>
 
+  <!-- Audio Latar Belakang (Loop) -->
+  <audio id="bgAudio" src="https://actions.google.com/sounds/v1/ambiences/coffee_shop.ogg" loop preload="auto"></audio>
+
   <!-- Pop-up Toast Tepat di Tengah Skrin -->
   <div id="toastContainer" class="toast-container"></div>
 
@@ -96,7 +99,7 @@
     <div class="footer-left">
       <div class="f-track-icon">🎵</div>
       <div class="f-track-info">
-        <span class="f-title">Western &amp; Grill</span>
+        <span class="f-title" id="nowPlayingTitle">Western &amp; Grill</span>
         <span class="f-sub">Now Playing...</span>
       </div>
     </div>

@@ -87,11 +87,36 @@ const menuData = [
 
 let activeCategory = "ALL";
 let cart = [];
-const SELLER_PHONE = "60123456789"; // Tukar nombor WhatsApp anda
+const SELLER_PHONE = "60128655181";
 
-// Sambungan Fail Audio Sebenar (Letakkan fail bg-music.mp3 dalam folder yang sama)
-const backgroundAudio = new Audio('bg-music.mp3');
-backgroundAudio.loop = true;
+const bgAudio = document.getElementById("bgAudio");
+const playMainBtn = document.querySelector(".play-main-btn");
+const nowPlayingTitle = document.getElementById("nowPlayingTitle");
+let isPlaying = false;
+
+if (playMainBtn && bgAudio) {
+  playMainBtn.addEventListener("click", () => {
+    if (isPlaying) {
+      bgAudio.pause();
+      playMainBtn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="#000000"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>`;
+      showCenterToast("Music paused");
+    } else {
+      bgAudio.play().then(() => {
+        playMainBtn.innerHTML = `
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#000000">
+            <rect x="6" y="4" width="4" height="16"></rect>
+            <rect x="14" y="4" width="4" height="16"></rect>
+          </svg>
+        `;
+        showCenterToast("Playing café vibes 🎶");
+      }).catch(err => {
+        console.log("Audio error:", err);
+        showCenterToast("Sila klik sekali lagi untuk play");
+      });
+    }
+    isPlaying = !isPlaying;
+  });
+}
 
 function renderMenu() {
   const grid = document.getElementById("menuGrid");
@@ -150,6 +175,7 @@ function addToCart(id) {
     cart.push({ ...product, qty: 1 });
   }
 
+  nowPlayingTitle.textContent = `Selected: ${product.name}`;
   updateCart();
   showCenterToast(product.name);
 }
@@ -215,39 +241,6 @@ function showCenterToast(title) {
     toast.style.transition = "all 0.2s ease";
     setTimeout(() => toast.remove(), 200);
   }, 1600);
-}
-
-// Kawalan Butang Play Footer Bawah
-const playMainBtn = document.querySelector(".play-main-btn");
-let isPlaying = false;
-
-if (playMainBtn) {
-  playMainBtn.addEventListener("click", () => {
-    isPlaying = !isPlaying;
-    if (isPlaying) {
-      backgroundAudio.play().then(() => {
-        playMainBtn.innerHTML = `
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="#000000">
-            <rect x="6" y="4" width="4" height="16"></rect>
-            <rect x="14" y="4" width="4" height="16"></rect>
-          </svg>
-        `;
-        showCenterToast("Playing background music 🎶");
-      }).catch(err => {
-        console.log("Audio play error:", err);
-        showCenterToast("Sila masukkan fail bg-music.mp3");
-        isPlaying = false;
-      });
-    } else {
-      backgroundAudio.pause();
-      playMainBtn.innerHTML = `
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="#000000">
-          <polygon points="5 3 19 12 5 21 5 3"></polygon>
-        </svg>
-      `;
-      showCenterToast("Music paused");
-    }
-  });
 }
 
 const cartDrawer = document.getElementById("cartDrawer");
