@@ -3,22 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Western & Grill | Digital Menu</title>
+  <title>Western & Grill — Menu Pesanan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- Toast Notification -->
+  <!-- Toast Notification (Tepat di Tengah Skrin) -->
   <div id="toastContainer" class="toast-container"></div>
 
   <div class="app-frame">
     
-    <!-- SIDEBAR KIRI (DARK BROWN) -->
+    <!-- SIDEBAR KIRI (UNTUK DESKTOP) -->
     <aside class="sidebar">
       <div class="brand-box">
         <div class="brand-circle-logo">
-          <!-- Ikon Topi Chef & Sudu Garfu -->
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#472210" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z"/>
             <line x1="6" y1="17" x2="18" y2="17"/>
@@ -30,7 +31,7 @@
         </div>
       </div>
 
-      <nav class="category-menu" id="categoryMenu">
+      <nav class="category-menu" id="categoryMenuDesktop">
         <button class="cat-btn active" data-category="MAIN COURSE">MAIN COURSE</button>
         <button class="cat-btn" data-category="PASTA & SPAGHETTI">PASTA & SPAGHETTI</button>
         <button class="cat-btn" data-category="SIDES">SIDES</button>
@@ -38,10 +39,10 @@
       </nav>
     </aside>
 
-    <!-- BAHAGIAN KANAN (TOP BAR + KANDUNGAN PUTIH) -->
+    <!-- BAHAGIAN KANAN -->
     <div class="right-section">
       
-      <!-- Top Bar (Tel & Waktu Operasi) -->
+      <!-- Top Bar Desktop -->
       <header class="top-bar">
         <div class="top-info">
           <span>Tel : 012-3445678</span>
@@ -51,9 +52,61 @@
         </div>
       </header>
 
-      <!-- Tetingkap Putih Menu -->
+      <!-- Tetingkap Utama -->
       <main class="content-window">
-        <!-- Butang Troli Bulat di Penjuru Kanan Atas -->
+        
+        <!-- MOBILE HEADER (LOGO TENGAH & ICON CART KANAN) -->
+        <div class="mobile-header">
+          <div class="mobile-spacer"></div>
+          <div class="mobile-brand">
+            <div class="brand-circle-logo-sm">🐱</div>
+            <div class="mobile-brand-text">
+              <span>Western</span>
+              <span>& Grill</span>
+            </div>
+          </div>
+          <button class="mobile-cart-icon-btn" id="openCartBtnMobile" title="View Cart">
+            🛒
+            <span class="cart-badge" id="cartBadgeMobile">0</span>
+          </button>
+        </div>
+
+        <!-- HERO BANNER (KHAS UNTUK PHONE) -->
+        <div class="hero-banner">
+          <div class="hero-text">
+            <h2>
+              <span class="text-brown">GOOD FOOD,</span><br>
+              <span class="text-brown">GOOD MOOD,</span><br>
+              <span class="text-green">GREAT MEMORIES.</span>
+            </h2>
+            <p>Fresh ingredients, unique flavours, and unforgettable experiences.</p>
+          </div>
+          <div class="hero-img-box">
+            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=400&q=80" alt="Burger Banner">
+          </div>
+        </div>
+
+        <!-- IKON KATEGORI BULAT (KHAS UNTUK PHONE) -->
+        <div class="mobile-category-scroll">
+          <button class="cat-circle-item active" data-category="MAIN COURSE">
+            <div class="circle-icon">🍽️</div>
+            <span>Main Course</span>
+          </button>
+          <button class="cat-circle-item" data-category="PASTA & SPAGHETTI">
+            <div class="circle-icon">🍝</div>
+            <span>Pasta</span>
+          </button>
+          <button class="cat-circle-item" data-category="SIDES">
+            <div class="circle-icon">🍟</div>
+            <span>Sides</span>
+          </button>
+          <button class="cat-circle-item" data-category="COMBO">
+            <div class="circle-icon">🍔</div>
+            <span>Combo</span>
+          </button>
+        </div>
+
+        <!-- Butang Troli Desktop (Kanan Atas) -->
         <button class="floating-cart-btn" id="openCartBtn" title="View Cart">
           🛒
           <span class="cart-badge" id="cartBadge">0</span>
@@ -61,7 +114,7 @@
 
         <h1 class="category-heading" id="categoryHeading">MAIN COURSE</h1>
 
-        <!-- Grid Kad Makanan (4 Kolum) -->
+        <!-- Grid Kad Makanan -->
         <div class="menu-grid" id="menuGrid">
           <!-- Dijana secara automatik oleh script.js -->
         </div>
@@ -71,53 +124,68 @@
 
   </div>
 
-  <!-- FOOTER BAWAH (SOCIAL MEDIA) -->
+  <!-- FOOTER BAWAH -->
   <footer class="bottom-bar">
     <div class="footer-inner">
-      <span>Facebook : Western & Grill</span>
       <span>Instagram : WesternGrill.co</span>
-      <span>Thread : Western & Grill by nana</span>
+      <span>Facebook : Western & Grill</span>
     </div>
   </footer>
 
-  <!-- SLIDE-OUT CART DRAWER -->
-  <div id="cartOverlay" class="cart-overlay"></div>
-  <aside id="cartDrawer" class="cart-drawer">
-    <div class="cart-drawer-header">
-      <h3>🛒 Pesanan Anda</h3>
-      <button id="closeCartBtn" class="close-btn">&times;</button>
+  <!-- DRAWER / SLIDE-OUT CART -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h2>Pesanan Anda</h2>
+      <button class="close-cart-btn" id="closeCartBtn">✕</button>
     </div>
 
-    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-items" id="cartItems">
+      <p class="empty-cart-msg">Troli anda masih kosong.</p>
+    </div>
 
-    <!-- KELAS PEMBUNGKUS FOOTER CART YANG DIPERBETULKAN -->
-    <div class="cart-drawer-footer">
+    <div class="cart-footer">
       <div class="form-group">
-        <label for="custName">Nama Pelanggan *</label>
-        <input type="text" id="custName" placeholder="Masukkan nama anda" />
+        <label for="custName">Nama Penuh *</label>
+        <input type="text" id="custName" placeholder="Contoh: Ahmad Albab" />
       </div>
 
       <div class="form-group">
-        <label for="custAddress">Alamat Penghantaran / Lokasi COD *</label>
-        <input type="text" id="custAddress" placeholder="Cth: Taman Seri Mawar / UMP / Kolej..." />
-      </div>
-
-      <div class="form-group">
-        <label for="orderType">Jenis Perkhidmatan / Penghantaran</label>
+        <label for="orderType">Kaedah Pesanan *</label>
         <select id="orderType">
-          <option value="COD - Kawasan Bandar (Free)">COD - Kawasan Bandar (Percuma)</option>
-          <option value="COD - Luar Bandar / Jauh (+RM5.00)">COD - Luar Bandar / Jauh (+RM5.00)</option>
-          <option value="Self-Pickup / Ambil Sendiri">Self-Pickup / Ambil Sendiri</option>
+          <option value="COD (Dalam Bandar - Percuma)">COD (Dalam Bandar - Percuma)</option>
+          <option value="COD (Luar Bandar - +RM 5.00)">COD (Luar Bandar - +RM 5.00)</option>
+          <option value="Self-Pickup (Ambil Sendiri)">Self-Pickup (Ambil Sendiri)</option>
         </select>
       </div>
 
-      <div class="total-row">
-        <span>Jumlah Keseluruhan</span>
-        <strong id="cartTotal">RM 0.00</strong>
+      <div class="form-group" id="addressGroup">
+        <label for="custAddress">Alamat Penghantaran (COD) *</label>
+        <textarea id="custAddress" rows="2" placeholder="Masukkan alamat lengkap atau link Google Maps..."></textarea>
       </div>
 
-      <button id="checkoutBtn" class="whatsapp-checkout-btn">
-        Hantar Order ke WhatsApp 💬
+      <div class="form-group">
+        <label for="orderNotes">Nota Tambahan (Pilihan)</label>
+        <input type="text" id="orderNotes" placeholder="Contoh: Sos blackpepper asing" />
+      </div>
+
+      <div class="price-summary">
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <span id="subtotalText">RM 0.00</span>
+        </div>
+        <div class="summary-row" id="deliveryRow">
+          <span>Caj Penghantaran</span>
+          <span id="deliveryFeeText">RM 0.00</span>
+        </div>
+        <div class="summary-row total-row">
+          <span>Jumlah Bayaran</span>
+          <span id="totalText">RM 0.00</span>
+        </div>
+      </div>
+
+      <button class="whatsapp-btn" id="checkoutBtn">
+        <span>Hantar Pesanan ke WhatsApp</span>
       </button>
     </div>
   </aside>

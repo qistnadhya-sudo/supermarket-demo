@@ -1,105 +1,180 @@
-const SELLER_PHONE = "60123445678";
-
-const menuItems = [
+// Senarai Data Menu Western & Grill
+const menuData = [
   // MAIN COURSE
-  { id: 1, category: "MAIN COURSE", title: "Classic Chicken Chop", price: 25.90, desc: "Crispy breaded thigh, black pepper sauce, fries, coleslaw.", img: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=500&q=80" },
-  { id: 2, category: "MAIN COURSE", title: "Grilled Lamb Chop", price: 36.00, desc: "3pcs tender lamb shoulder, mint sauce, mashed potato, salad.", img: "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=500&q=80" },
-  { id: 3, category: "MAIN COURSE", title: "Fish & Chips", price: 24.50, desc: "Deep-fried crispy dory fillet, tartar sauce, salad, wedges.", img: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=500&q=80" },
-  { id: 4, category: "MAIN COURSE", title: "Grilled Blackpepper Chicken", price: 23.90, desc: "Juicy grilled chicken chop, rich black pepper sauce, fries.", img: "https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=500&q=80" },
-  { id: 5, category: "MAIN COURSE", title: "Sirloin Beef Steak", price: 42.00, desc: "Australian beef sirloin, brown mushroom sauce, roasted veg.", img: "https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=500&q=80" },
-  { id: 6, category: "MAIN COURSE", title: "Hawaiian Chicken Burger", price: 22.00, desc: "Crispy chicken patty, grilled pineapple, cheddar cheese, fries.", img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=500&q=80" },
-  { id: 7, category: "MAIN COURSE", title: "Cheesy Chicken Maryland", price: 27.50, desc: "Breaded chicken, fried banana, sausage, cheese sauce, fries.", img: "https://images.unsplash.com/photo-1625813506062-0aeb1d7a094b?auto=format&fit=crop&w=500&q=80" },
-  { id: 8, category: "MAIN COURSE", title: "Salted Egg Chicken Chop", price: 26.90, desc: "Crispy chicken chop topped with creamy salted egg yolk sauce.", img: "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=500&q=80" },
+  {
+    id: 1,
+    category: "MAIN COURSE",
+    name: "Crispy Chicken Chop",
+    desc: "Ayam goreng rangup bersama sos blackpepper pekat, kentang putar & coleslaw.",
+    price: 16.90,
+    img: "https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    id: 2,
+    category: "MAIN COURSE",
+    name: "Grilled Lamb Chop",
+    desc: "Daging kambing perap herba dipanggang sempurna dengan sos lada hitam.",
+    price: 24.90,
+    img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    id: 3,
+    category: "MAIN COURSE",
+    name: "Grilled Chicken Chop",
+    desc: "Peha ayam tanpa tulang dipanggang berjus dengan sos mushroom atau blackpepper.",
+    price: 17.90,
+    img: "https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    id: 4,
+    category: "MAIN COURSE",
+    name: "Fish & Chips",
+    desc: "Isi ikan dory bersalut tepung rangup bersama kentang goreng & sos tartar.",
+    price: 15.90,
+    img: "https://images.unsplash.com/photo-1579208575657-c595a05383b7?auto=format&fit=crop&w=500&q=80"
+  },
 
   // PASTA & SPAGHETTI
-  { id: 9, category: "PASTA & SPAGHETTI", title: "Beef Bolognese Spaghetti", price: 24.00, desc: "Classic spaghetti with rich minced beef tomato sauce & parmesan.", img: "https://images.unsplash.com/photo-1621996346565-e3d5d6281298?auto=format&fit=crop&w=500&q=80" },
-  { id: 10, category: "PASTA & SPAGHETTI", title: "Creamy Carbonara", price: 25.00, desc: "Spaghetti tossed in creamy white sauce, beef streaky & mushroom.", img: "https://images.unsplash.com/photo-1612874742237-6526221588e3?auto=format&fit=crop&w=500&q=80" },
-  { id: 11, category: "PASTA & SPAGHETTI", title: "Aglio Olio Seafood", price: 28.50, desc: "Olive oil, garlic, chili flakes, fresh prawns & squid rings.", img: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=500&q=80" },
-  { id: 12, category: "PASTA & SPAGHETTI", title: "Mac & Cheese Baked", price: 21.00, desc: "Macaroni baked with mozzarella & cheddar cheese crust.", img: "https://images.unsplash.com/photo-1543339494-b4cd4f7ba686?auto=format&fit=crop&w=500&q=80" },
+  {
+    id: 5,
+    category: "PASTA & SPAGHETTI",
+    name: "Spaghetti Carbonara",
+    desc: "Sos berkrim keju parmesan bersama hirisan daging salai & cendawan butang.",
+    price: 14.90,
+    img: "https://images.unsplash.com/photo-1612874742237-6526221588e3?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    id: 6,
+    category: "PASTA & SPAGHETTI",
+    name: "Spaghetti Bolognese",
+    desc: "Sos tomato autentik dimasak perlahan bersama daging lembu cincang.",
+    price: 13.90,
+    img: "https://images.unsplash.com/photo-1622973536968-3ead9e780960?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    id: 7,
+    category: "PASTA & SPAGHETTI",
+    name: "Aglio Olio Seafood",
+    desc: "Spaghetti tumis bawang putih & minyak zaitun bersama udang dan sotong segar.",
+    price: 18.50,
+    img: "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?auto=format&fit=crop&w=500&q=80"
+  },
 
   // SIDES
-  { id: 13, category: "SIDES", title: "Spicy Chicken Tenders", price: 16.00, desc: "6pcs fiery crispy chicken tenders with honey mustard dip.", img: "https://images.unsplash.com/photo-1562967916-eb82221dfb92?auto=format&fit=crop&w=500&q=80" },
-  { id: 14, category: "SIDES", title: "Mushroom Soup & Garlic Bread", price: 12.50, desc: "Homemade creamy mushroom soup served with 3pcs garlic toast.", img: "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=500&q=80" },
-  { id: 15, category: "SIDES", title: "Cheesy Wedges", price: 11.00, desc: "Crispy potato wedges drizzled with nacho cheese & mayo.", img: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=500&q=80" },
-  { id: 16, category: "SIDES", title: "Crispy Calamari Rings", price: 15.50, desc: "Golden fried squid rings served with thai chili & tartar sauce.", img: "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=500&q=80" },
+  {
+    id: 8,
+    category: "SIDES",
+    name: "Cheesy Wedges",
+    desc: "Kentang baji rangup disiram sos keju cair dan mayonis.",
+    price: 7.50,
+    img: "https://images.unsplash.com/photo-1576107232684-1279f390859f?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    id: 9,
+    category: "SIDES",
+    name: "Garlic Bread & Mushroom Soup",
+    desc: "Sup cendawan berkrim dihidang panas bersama 2 keping roti bawang putih.",
+    price: 8.90,
+    img: "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    id: 10,
+    category: "SIDES",
+    name: "Crispy Calamari Rings",
+    desc: "Sotong celup tepung goreng keemasan dengan sos cili Thai.",
+    price: 10.90,
+    img: "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=500&q=80"
+  },
 
   // COMBO
-  { id: 17, category: "COMBO", title: "Couple Western Platter", price: 58.00, desc: "1 Chicken Chop, 1 Lamb Chop, Spaghetti, Fries, Wedges & 2 Drinks.", img: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=500&q=80" },
-  { id: 18, category: "COMBO", title: "Family Feast Box (4 Pax)", price: 98.00, desc: "2 Chicken Chop, 1 Fish & Chips, 1 Carbonara, Sides & 4 Drinks.", img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=500&q=80" }
+  {
+    id: 11,
+    category: "COMBO",
+    name: "Talam Western Family (3-4 Pax)",
+    desc: "Lamb Chop, Chicken Chop, Meatball, Spaghetti, Fries & 1 Jag Air.",
+    price: 59.90,
+    img: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=500&q=80"
+  },
+  {
+    id: 12,
+    category: "COMBO",
+    name: "Couple Grill Platter (2 Pax)",
+    desc: "Grilled Chicken, Lamb Shoulder, Cheesy Wedges & 2 Iced Lemon Tea.",
+    price: 38.90,
+    img: "https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=500&q=80"
+  }
 ];
-
-// Buka / Tutup Cart Drawer
-const cartDrawer = document.getElementById("cartDrawer");
-const cartOverlay = document.getElementById("cartOverlay");
-
-function openCart() { 
-  cartDrawer.classList.add("open"); 
-  cartOverlay.classList.add("open"); 
-}
-
-function closeCart() { 
-  cartDrawer.classList.remove("open"); 
-  cartOverlay.classList.remove("open"); 
-}
-
-document.getElementById("openCartBtn").addEventListener("click", openCart);
-document.getElementById("closeCartBtn").addEventListener("click", closeCart);
-cartOverlay.addEventListener("click", closeCart);
 
 let currentCategory = "MAIN COURSE";
 let cart = [];
 
+// Nombor WhatsApp Penjual (Tukar kepada nombor anda dengan kod negara 60)
+const SELLER_PHONE = "60123456789";
+
+// Papar Menu Mengikut Kategori
 function renderMenu() {
   const grid = document.getElementById("menuGrid");
   const heading = document.getElementById("categoryHeading");
   heading.textContent = currentCategory;
 
-  const filtered = menuItems.filter(item => item.category === currentCategory);
+  const filtered = menuData.filter(item => item.category === currentCategory);
 
   grid.innerHTML = filtered.map(item => `
     <div class="menu-card">
-      <div class="card-img-box">
-        <img src="${item.img}" alt="${item.title}" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=500&q=80';" />
+      <div>
+        <div class="card-img-box">
+          <img src="${item.img}" alt="${item.name}" loading="lazy" />
+        </div>
+        <h3 class="card-title">${item.name}</h3>
+        <p class="card-desc">${item.desc}</p>
       </div>
-      <h3 class="card-title">${item.title}</h3>
-      <p class="card-desc">${item.desc}</p>
-      <div class="card-bottom">
+      <div class="card-footer">
         <span class="card-price">RM ${item.price.toFixed(2)}</span>
-        <button class="add-btn" onclick="addToCart(${item.id})">Add to Cart</button>
+        <button class="add-btn" onclick="addToCart(${item.id})">+ Add</button>
       </div>
     </div>
   `).join("");
 }
 
-// ... (kekalkan fungsi cart dan event listener yang lain di bawah seperti biasa)
-
-// Tukar Kategori bila klik menu di Sidebar Kiri
+// Klik Butang Kategori Desktop
 document.querySelectorAll(".cat-btn").forEach(btn => {
   btn.addEventListener("click", () => {
     document.querySelectorAll(".cat-btn").forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
     currentCategory = btn.getAttribute("data-category");
+    syncMobileCategory(currentCategory);
     renderMenu();
   });
 });
 
-// Toast Notification
-function showToast(title) {
-  const container = document.getElementById("toastContainer");
-  if (container.children.length >= 2) container.firstChild.remove();
-  const t = document.createElement("div");
-  t.className = "toast-item";
-  t.textContent = `✓ ${title} ditambah ke troli!`;
-  container.appendChild(t);
-  setTimeout(() => t.remove(), 2200);
+// Klik Ikon Kategori Bulat Mobile
+document.querySelectorAll(".cat-circle-item").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".cat-circle-item").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    currentCategory = btn.getAttribute("data-category");
+    syncDesktopCategory(currentCategory);
+    renderMenu();
+  });
+});
+
+function syncMobileCategory(cat) {
+  document.querySelectorAll(".cat-circle-item").forEach(b => {
+    b.classList.toggle("active", b.getAttribute("data-category") === cat);
+  });
 }
 
-// Fungsi Cart
-function addToCart(id) {
-  const product = menuItems.find(i => i.id === id);
-  if (!product) return;
+function syncDesktopCategory(cat) {
+  document.querySelectorAll(".cat-btn").forEach(b => {
+    b.classList.toggle("active", b.getAttribute("data-category") === cat);
+  });
+}
 
-  const existing = cart.find(c => c.id === id);
+// Tambah Item ke Troli
+function addToCart(id) {
+  const product = menuData.find(p => p.id === id);
+  const existing = cart.find(item => item.id === id);
+
   if (existing) {
     existing.qty += 1;
   } else {
@@ -107,94 +182,157 @@ function addToCart(id) {
   }
 
   updateCartUI();
-  showToast(product.title);
+  showToast(product.name);
 }
 
+// Ubah Kuantiti Item
 function changeQty(id, delta) {
-  const item = cart.find(c => c.id === id);
+  const item = cart.find(i => i.id === id);
   if (!item) return;
+
   item.qty += delta;
-  if (item.qty <= 0) cart = cart.filter(c => c.id !== id);
+  if (item.qty <= 0) {
+    cart = cart.filter(i => i.id !== id);
+  }
   updateCartUI();
 }
 
-// Pengiraan harga dan caj penghantaran COD
+// Kemas Kini Paparan Troli
 function updateCartUI() {
   const totalQty = cart.reduce((sum, i) => sum + i.qty, 0);
-  let subtotal = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+  const subtotal = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
 
   const orderType = document.getElementById("orderType").value;
-  // Jika pilih COD luar bandar, tambah caj RM5.00
   const deliveryFee = orderType.includes("Luar Bandar") ? 5.00 : 0.00;
   const finalTotal = subtotal + deliveryFee;
 
+  // Kemas kini lencana kuantiti pada Desktop & Mobile
   document.getElementById("cartBadge").textContent = totalQty;
+  document.getElementById("cartBadgeMobile").textContent = totalQty;
 
-  const container = document.getElementById("cartItems");
+  const cartItemsEl = document.getElementById("cartItems");
   if (cart.length === 0) {
-    container.innerHTML = `<p style="text-align:center; color:#78716c; margin-top:40px;">Troli pesanan anda masih kosong.</p>`;
-    document.getElementById("cartTotal").textContent = "RM 0.00";
-    return;
+    cartItemsEl.innerHTML = `<p class="empty-cart-msg">Troli anda masih kosong.</p>`;
+  } else {
+    cartItemsEl.innerHTML = cart.map(item => `
+      <div class="cart-item">
+        <div class="cart-item-info">
+          <h4>${item.name}</h4>
+          <p>RM ${(item.price * item.qty).toFixed(2)}</p>
+        </div>
+        <div class="qty-controls">
+          <button class="qty-btn" onclick="changeQty(${item.id}, -1)">-</button>
+          <span>${item.qty}</span>
+          <button class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button>
+        </div>
+      </div>
+    `).join("");
   }
 
-  container.innerHTML = "";
-  cart.forEach(item => {
-    const row = document.createElement("div");
-    row.className = "cart-item-row";
-    row.innerHTML = `
-      <div>
-        <h4 style="font-size:0.85rem; font-weight:700;">${item.title}</h4>
-        <span style="font-size:0.75rem; color:#78716c;">RM ${item.price.toFixed(2)} x ${item.qty}</span>
-      </div>
-      <div class="qty-controls">
-        <button class="q-btn" onclick="changeQty(${item.id}, -1)">-</button>
-        <span style="font-size:0.85rem; font-weight:700;">${item.qty}</span>
-        <button class="q-btn" onclick="changeQty(${item.id}, 1)">+</button>
-      </div>
-    `;
-    container.appendChild(row);
-  });
-
-  document.getElementById("cartTotal").textContent = `RM ${finalTotal.toFixed(2)}`;
+  document.getElementById("subtotalText").textContent = `RM ${subtotal.toFixed(2)}`;
+  document.getElementById("deliveryFeeText").textContent = `RM ${deliveryFee.toFixed(2)}`;
+  document.getElementById("totalText").textContent = `RM ${finalTotal.toFixed(2)}`;
 }
 
-document.getElementById("orderType").addEventListener("change", updateCartUI);
+// Pop-up Toast di Tengah-tengah Skrin
+function showToast(title) {
+  const container = document.getElementById("toastContainer");
+  if (container.children.length >= 2) container.firstChild.remove();
 
-// Hantar Order COD ke WhatsApp
-document.getElementById("checkoutBtn").addEventListener("click", () => {
-  if (cart.length === 0) {
-    alert("Sila pilih sekurang-kurangnya satu menu.");
-    return;
+  const t = document.createElement("div");
+  t.className = "toast-item";
+  t.innerHTML = `<span>✅</span> <span><strong>${title}</strong> ditambah ke troli!</span>`;
+  container.appendChild(t);
+
+  setTimeout(() => {
+    t.style.opacity = "0";
+    t.style.transform = "scale(0.9)";
+    t.style.transition = "all 0.25s ease";
+    setTimeout(() => t.remove(), 250);
+  }, 1800);
+}
+
+// Kawalan Buka & Tutup Troli
+const cartDrawer = document.getElementById("cartDrawer");
+const cartOverlay = document.getElementById("cartOverlay");
+
+function openCart() {
+  cartDrawer.classList.add("open");
+  cartOverlay.classList.add("open");
+}
+
+function closeCart() {
+  cartDrawer.classList.remove("open");
+  cartOverlay.classList.remove("open");
+}
+
+document.getElementById("openCartBtn").addEventListener("click", openCart);
+document.getElementById("openCartBtnMobile").addEventListener("click", openCart);
+document.getElementById("closeCartBtn").addEventListener("click", closeCart);
+cartOverlay.addEventListener("click", closeCart);
+
+// Kawalan Pilihan COD vs Self-Pickup
+document.getElementById("orderType").addEventListener("change", (e) => {
+  const addrGroup = document.getElementById("addressGroup");
+  if (e.target.value.includes("Self-Pickup")) {
+    addrGroup.style.display = "none";
+  } else {
+    addrGroup.style.display = "block";
   }
-  const name = document.getElementById("custName").value.trim();
-  const address = document.getElementById("custAddress").value.trim();
-
-  if (!name) {
-    alert("Sila masukkan nama anda.");
-    document.getElementById("custName").focus();
-    return;
-  }
-  if (!address) {
-    alert("Sila masukkan alamat / lokasi COD.");
-    document.getElementById("custAddress").focus();
-    return;
-  }
-
-  let msg = `*PESANAN BARU - COD & DELIVERY*\n\n`;
-  msg += `*Nama:* ${name}\n`;
-  msg += `*Alamat / Lokasi COD:* ${address}\n`;
-  msg += `*Jenis Khidmat:* ${document.getElementById("orderType").value}\n\n`;
-  msg += `*Senarai Menu:*\n`;
-
-  cart.forEach((item, i) => {
-    msg += `${i + 1}. ${item.title} (x${item.qty}) - RM ${(item.price * item.qty).toFixed(2)}\n`;
-  });
-
-  msg += `\n*Jumlah Keseluruhan:* ${document.getElementById("cartTotal").textContent}`;
-
-  const url = `https://wa.me/${SELLER_PHONE}?text=${encodeURIComponent(msg)}`;
-  window.open(url, "_blank");
+  updateCartUI();
 });
 
+// Hantar Pesanan ke WhatsApp
+document.getElementById("checkoutBtn").addEventListener("click", () => {
+  if (cart.length === 0) {
+    alert("Sila pilih sekurang-kurangnya satu menu terlebih dahulu!");
+    return;
+  }
+
+  const name = document.getElementById("custName").value.trim();
+  const orderType = document.getElementById("orderType").value;
+  const address = document.getElementById("custAddress").value.trim();
+  const notes = document.getElementById("orderNotes").value.trim();
+
+  if (!name) {
+    alert("Sila masukkan nama penuh anda.");
+    return;
+  }
+
+  if (!orderType.includes("Self-Pickup") && !address) {
+    alert("Sila masukkan alamat penghantaran COD anda.");
+    return;
+  }
+
+  let subtotal = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+  let deliveryFee = orderType.includes("Luar Bandar") ? 5.00 : 0.00;
+  let total = subtotal + deliveryFee;
+
+  let msg = `*PESANAN BARU - WESTERN & GRILL*\n`;
+  msg += `----------------------------------\n`;
+  msg += `*Nama:* ${name}\n`;
+  msg += `*Kaedah:* ${orderType}\n`;
+  if (!orderType.includes("Self-Pickup")) {
+    msg += `*Alamat COD:* ${address}\n`;
+  }
+  if (notes) {
+    msg += `*Nota:* ${notes}\n`;
+  }
+  msg += `----------------------------------\n`;
+  msg += `*Senarai Menu:*\n`;
+
+  cart.forEach((item, index) => {
+    msg += `${index + 1}. ${item.name} (x${item.qty}) - RM ${(item.price * item.qty).toFixed(2)}\n`;
+  });
+
+  msg += `----------------------------------\n`;
+  msg += `Subtotal: RM ${subtotal.toFixed(2)}\n`;
+  msg += `Caj Penghantaran: RM ${deliveryFee.toFixed(2)}\n`;
+  msg += `*JUMLAH BAYARAN: RM ${total.toFixed(2)}*\n`;
+
+  const waUrl = `https://wa.me/${SELLER_PHONE}?text=${encodeURIComponent(msg)}`;
+  window.open(waUrl, "_blank");
+});
+
+// Mulakan paparan menu
 renderMenu();
-updateCartUI();
