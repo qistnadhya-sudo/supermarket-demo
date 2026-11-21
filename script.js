@@ -1,15 +1,15 @@
 const SELLER_PHONE = "60123445678";
 
 const menuItems = [
-  // MAIN COURSE (8 item penuh macam dalam gambar rujukan)
-  { id: 1, category: "MAIN COURSE", title: "Classic Chicken Chop", price: 25.90, desc: "Crispy breaded thigh, black pepper sauce, fries, coleslaw.", img: "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=500&q=80" },
-  { id: 2, category: "MAIN COURSE", title: "Grilled Lamb Chop", price: 36.00, desc: "3pcs tender lamb shoulder, mint sauce, mashed potato, salad.", img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=500&q=80" },
+  // MAIN COURSE
+  { id: 1, category: "MAIN COURSE", title: "Classic Chicken Chop", price: 25.90, desc: "Crispy breaded thigh, black pepper sauce, fries, coleslaw.", img: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=500&q=80" },
+  { id: 2, category: "MAIN COURSE", title: "Grilled Lamb Chop", price: 36.00, desc: "3pcs tender lamb shoulder, mint sauce, mashed potato, salad.", img: "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=500&q=80" },
   { id: 3, category: "MAIN COURSE", title: "Fish & Chips", price: 24.50, desc: "Deep-fried crispy dory fillet, tartar sauce, salad, wedges.", img: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=500&q=80" },
-  { id: 4, category: "MAIN COURSE", title: "Grilled Blackpepper Chicken", price: 23.90, desc: "Juicy grilled chicken chop, rich black pepper sauce, fries.", img: "https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?auto=format&fit=crop&w=500&q=80" },
+  { id: 4, category: "MAIN COURSE", title: "Grilled Blackpepper Chicken", price: 23.90, desc: "Juicy grilled chicken chop, rich black pepper sauce, fries.", img: "https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=500&q=80" },
   { id: 5, category: "MAIN COURSE", title: "Sirloin Beef Steak", price: 42.00, desc: "Australian beef sirloin, brown mushroom sauce, roasted veg.", img: "https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=500&q=80" },
   { id: 6, category: "MAIN COURSE", title: "Hawaiian Chicken Burger", price: 22.00, desc: "Crispy chicken patty, grilled pineapple, cheddar cheese, fries.", img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=500&q=80" },
-  { id: 7, category: "MAIN COURSE", title: "Cheesy Chicken Maryland", price: 27.50, desc: "Breaded chicken, fried banana, sausage, cheese sauce, fries.", img: "https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?auto=format&fit=crop&w=500&q=80" },
-  { id: 8, category: "MAIN COURSE", title: "Salted Egg Chicken Chop", price: 26.90, desc: "Crispy chicken chop topped with creamy salted egg yolk sauce.", img: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=500&q=80" },
+  { id: 7, category: "MAIN COURSE", title: "Cheesy Chicken Maryland", price: 27.50, desc: "Breaded chicken, fried banana, sausage, cheese sauce, fries.", img: "https://images.unsplash.com/photo-1625813506062-0aeb1d7a094b?auto=format&fit=crop&w=500&q=80" },
+  { id: 8, category: "MAIN COURSE", title: "Salted Egg Chicken Chop", price: 26.90, desc: "Crispy chicken chop topped with creamy salted egg yolk sauce.", img: "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=500&q=80" },
 
   // PASTA & SPAGHETTI
   { id: 9, category: "PASTA & SPAGHETTI", title: "Beef Bolognese Spaghetti", price: 24.00, desc: "Classic spaghetti with rich minced beef tomato sauce & parmesan.", img: "https://images.unsplash.com/photo-1621996346565-e3d5d6281298?auto=format&fit=crop&w=500&q=80" },
@@ -31,7 +31,6 @@ const menuItems = [
 let currentCategory = "MAIN COURSE";
 let cart = [];
 
-// Render Menu mengikut Kategori
 function renderMenu() {
   const grid = document.getElementById("menuGrid");
   const heading = document.getElementById("categoryHeading");
@@ -42,7 +41,7 @@ function renderMenu() {
   grid.innerHTML = filtered.map(item => `
     <div class="menu-card">
       <div class="card-img-box">
-        <img src="${item.img}" alt="${item.title}" />
+        <img src="${item.img}" alt="${item.title}" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=500&q=80';" />
       </div>
       <h3 class="card-title">${item.title}</h3>
       <p class="card-desc">${item.desc}</p>
@@ -53,6 +52,8 @@ function renderMenu() {
     </div>
   `).join("");
 }
+
+// ... (kekalkan fungsi cart dan event listener yang lain di bawah seperti biasa)
 
 // Tukar Kategori bila klik menu di Sidebar Kiri
 document.querySelectorAll(".cat-btn").forEach(btn => {
