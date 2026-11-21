@@ -90,16 +90,18 @@
 
     <div id="cartItems" class="cart-items"></div>
 
-    <div class="cart-drawer-footer">
-      <div class="form-group">
+    <div class="form-group">
         <label for="custName">Nama Pelanggan *</label>
         <input type="text" id="custName" placeholder="Masukkan nama anda" />
 
-        <label for="orderType">Jenis Pesanan</label>
+        <label for="custAddress">Alamat Penghantaran / Lokasi COD *</label>
+        <input type="text" id="custAddress" placeholder="Cth: Taman Seri Mawar / UMP / Kolej..." />
+
+        <label for="orderType">Jenis Perkhidmatan / Penghantaran</label>
         <select id="orderType">
-          <option value="Dine-In">Dine-In (Makan di Kedai)</option>
-          <option value="Takeaway / Self-Pickup">Takeaway / Bungkus</option>
-          <option value="Delivery (+RM3.00)">Delivery (+RM3.00)</option>
+          <option value="COD - Kawasan Bandar (Free)">COD - Kawasan Bandar (Percuma)</option>
+          <option value="COD - Luar Bandar / Jauh (+RM5.00)">COD - Luar Bandar / Jauh (+RM5.00)</option>
+          <option value="Self-Pickup / Ambil Sendiri">Self-Pickup / Ambil Sendiri</option>
         </select>
       </div>
 

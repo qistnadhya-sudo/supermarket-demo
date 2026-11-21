@@ -100,12 +100,14 @@ function changeQty(id, delta) {
   updateCartUI();
 }
 
+// Pengiraan harga dan caj penghantaran COD
 function updateCartUI() {
   const totalQty = cart.reduce((sum, i) => sum + i.qty, 0);
   let subtotal = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
 
   const orderType = document.getElementById("orderType").value;
-  const deliveryFee = orderType.includes("Delivery") ? 3.00 : 0.00;
+  // Jika pilih COD luar bandar, tambah caj RM5.00
+  const deliveryFee = orderType.includes("Luar Bandar") ? 5.00 : 0.00;
   const finalTotal = subtotal + deliveryFee;
 
   document.getElementById("cartBadge").textContent = totalQty;
@@ -140,40 +142,37 @@ function updateCartUI() {
 
 document.getElementById("orderType").addEventListener("change", updateCartUI);
 
-// Buka / Tutup Cart Drawer
-const cartDrawer = document.getElementById("cartDrawer");
-const cartOverlay = document.getElementById("cartOverlay");
-
-function openCart() { cartDrawer.classList.add("open"); cartOverlay.classList.add("open"); }
-function closeCart() { cartDrawer.classList.remove("open"); cartOverlay.classList.remove("open"); }
-
-document.getElementById("openCartBtn").addEventListener("click", openCart);
-document.getElementById("closeCartBtn").addEventListener("click", closeCart);
-cartOverlay.addEventListener("click", closeCart);
-
-// Hantar Order ke WhatsApp
+// Hantar Order COD ke WhatsApp
 document.getElementById("checkoutBtn").addEventListener("click", () => {
   if (cart.length === 0) {
     alert("Sila pilih sekurang-kurangnya satu menu.");
     return;
   }
   const name = document.getElementById("custName").value.trim();
+  const address = document.getElementById("custAddress").value.trim();
+
   if (!name) {
     alert("Sila masukkan nama anda.");
     document.getElementById("custName").focus();
     return;
   }
+  if (!address) {
+    alert("Sila masukkan alamat / lokasi COD.");
+    document.getElementById("custAddress").focus();
+    return;
+  }
 
-  let msg = `*NEW ORDER - WESTERN & GRILL*\n\n`;
+  let msg = `*PESANAN BARU - COD & DELIVERY*\n\n`;
   msg += `*Nama:* ${name}\n`;
-  msg += `*Jenis Pesanan:* ${document.getElementById("orderType").value}\n\n`;
+  msg += `*Alamat / Lokasi COD:* ${address}\n`;
+  msg += `*Jenis Khidmat:* ${document.getElementById("orderType").value}\n\n`;
   msg += `*Senarai Menu:*\n`;
 
   cart.forEach((item, i) => {
     msg += `${i + 1}. ${item.title} (x${item.qty}) - RM ${(item.price * item.qty).toFixed(2)}\n`;
   });
 
-  msg += `\n*Jumlah Bayaran:* ${document.getElementById("cartTotal").textContent}`;
+  msg += `\n*Jumlah Keseluruhan:* ${document.getElementById("cartTotal").textContent}`;
 
   const url = `https://wa.me/${SELLER_PHONE}?text=${encodeURIComponent(msg)}`;
   window.open(url, "_blank");
