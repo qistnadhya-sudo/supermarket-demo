@@ -288,4 +288,30 @@ document.getElementById("checkoutBtn").addEventListener("click", () => {
   window.open(`https://wa.me/${SELLER_PHONE}?text=${encodeURIComponent(msg)}`, "_blank");
 });
 
+// Fungsi Interaktif Player Footer di Bawah
+const playMainBtn = document.querySelector(".play-main-btn");
+let isPlaying = false;
+
+if (playMainBtn) {
+  playMainBtn.addEventListener("click", () => {
+    isPlaying = !isPlaying;
+    if (isPlaying) {
+      playMainBtn.innerHTML = `
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#000000">
+          <rect x="6" y="4" width="4" height="16"></rect>
+          <rect x="14" y="4" width="4" height="16"></rect>
+        </svg>
+      `;
+      showCenterToast("Vibes On! 🎶 Selamat menjamu selera");
+    } else {
+      playMainBtn.innerHTML = `
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#000000">
+          <polygon points="5 3 19 12 5 21 5 3"></polygon>
+        </svg>
+      `;
+      showCenterToast("Player dijeda");
+    }
+  });
+}
+
 renderMenu();
