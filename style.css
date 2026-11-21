@@ -230,10 +230,11 @@ body {
 }
 
 .hero-title {
-  font-size: 1.75rem;
+  font-family: 'Cinzel Decorative', serif; /* Guna Cinzel Decorative */
+  font-size: 1.55rem; /* Saiz dilaras sedikit supaya kemas dalam kotak */
   font-weight: 900;
-  line-height: 1.12;
-  letter-spacing: -0.4px;
+  line-height: 1.2;
+  letter-spacing: 0.3px;
   margin-bottom: 10px;
 }
 
@@ -551,6 +552,11 @@ body {
 @media (max-width: 820px) {
   .page-wrapper {
     padding: 18px 16px 32px 16px;
+  }
+
+  .hero-title {
+    font-size: 1.05rem;
+  }
   }
 
   /* Ubah susunan header jadi menegak (display: contents supaya boleh susun semula urutan) */
