@@ -1,0 +1,722 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: #121212; /* Latar hitam gelap Spotify */
+  color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================================
+   POP-UP TOAST TEPAT DI TENGAH SKRIN
+   ========================================= */
+.toast-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.toast-item {
+  background: rgba(24, 24, 24, 0.96);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  padding: 12px 22px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+  border: 2px solid #1DB954;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  animation: popIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* =========================================
+   PEMBUNGKUS UTAMA
+   ========================================= */
+.page-wrapper {
+  flex: 1;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 28px 32px 40px 32px;
+}
+
+/* =========================================
+   HEADER DESKTOP (SEBELAH-MENYEBELAH)
+   ========================================= */
+.top-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+
+.left-header-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+}
+
+.brand-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-spacer,
+.mobile-cart-btn {
+  display: none;
+}
+
+.brand-logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.cat-logo-circle {
+  width: 56px;
+  height: 56px;
+  background-color: #181818;
+  border: 2px solid #282828;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.brand-script {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Caveat', cursive;
+  font-size: 2.3rem;
+  line-height: 0.85;
+  color: #ffffff;
+}
+
+/* 5 Ikon Kategori Bulat */
+.category-bar {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.cat-circle-btn {
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.icon-ring {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: #242424;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  transition: all 0.2s ease;
+  border: 1px solid #333333;
+}
+
+.cat-circle-btn:hover .icon-ring {
+  background-color: #2a2a2a;
+}
+
+.cat-circle-btn.active .icon-ring {
+  background-color: #1DB954; /* Hijau Spotify aktif */
+  border-color: #1DB954;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 16px rgba(29, 185, 84, 0.4);
+}
+
+.cat-circle-btn span {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #b3b3b3;
+  text-align: center;
+  transition: color 0.2s;
+}
+
+.cat-circle-btn.active span {
+  color: #1DB954;
+}
+
+/* Kumpulan Kanan Desktop: Hero Banner + Cart Button */
+.right-banner-group {
+  flex: 1.15;
+  position: relative;
+}
+
+.cart-circle-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background-color: #242424;
+  border: 1px solid #383838;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.desktop-cart-btn {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  z-index: 10;
+}
+
+.cart-circle-btn:hover {
+  transform: scale(1.07);
+  background-color: #2e2e2e;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background-color: #1DB954;
+  color: #000000;
+  font-size: 0.72rem;
+  font-weight: 800;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hero Banner (Spotify Dark Gradient) */
+.hero-banner {
+  background: linear-gradient(135deg, #1f3a29 0%, #181818 65%, #121212 100%);
+  border: 1px solid #282828;
+  border-radius: 20px;
+  padding: 26px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.hero-content {
+  flex: 1;
+}
+
+.hero-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.55rem;
+  font-weight: 900;
+  line-height: 1.18;
+  letter-spacing: 0.3px;
+  margin-bottom: 10px;
+}
+
+.c-white {
+  color: #ffffff;
+}
+
+.c-spotify {
+  color: #1DB954;
+}
+
+.hero-subtitle {
+  font-family: 'Libre Baskerville', serif;
+  font-style: italic;
+  font-size: 0.8rem;
+  color: #b3b3b3;
+  line-height: 1.4;
+  max-width: 295px;
+}
+
+.hero-image {
+  width: 180px;
+  height: 145px;
+  border-radius: 16px;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* =========================================
+   GRID KAD MENU (6 KOLUM DESKTOP)
+   ========================================= */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+}
+
+.menu-card {
+  background-color: #181818; /* Kad Spotify */
+  border: 1px solid #262626;
+  border-radius: 14px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.menu-card:hover {
+  background-color: #242424;
+  transform: translateY(-4px);
+}
+
+.card-thumb {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  background-color: #282828;
+}
+
+.card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-name {
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+.card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  margin-top: auto;
+}
+
+.card-price {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #b3b3b3;
+}
+
+.card-add-btn {
+  background-color: #1DB954;
+  color: #000000;
+  border: none;
+  border-radius: 50px;
+  padding: 5px 10px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.15s, background-color 0.2s;
+}
+
+.card-add-btn:hover {
+  background-color: #1ed760;
+}
+
+.card-add-btn:active {
+  transform: scale(0.92);
+}
+
+/* =========================================
+   FOOTER HIJAU SPOTIFY DI BAWAH
+   ========================================= */
+.main-footer {
+  background-color: #1DB954;
+  color: #000000;
+  padding: 13px 32px;
+  margin-top: auto;
+}
+
+.footer-content {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  font-size: 0.84rem;
+  font-weight: 800;
+}
+
+/* =========================================
+   SLIDE-OUT CART DRAWER (DARK SPOTIFY)
+   ========================================= */
+.cart-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 900;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s;
+}
+
+.cart-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.cart-drawer {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  max-width: 390px;
+  height: 100vh;
+  background-color: #181818;
+  color: #ffffff;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: -8px 0 28px rgba(0, 0, 0, 0.6);
+  border-left: 1px solid #282828;
+}
+
+.cart-drawer.open {
+  right: 0;
+}
+
+.cart-header {
+  padding: 18px 20px;
+  background-color: #121212;
+  border-bottom: 1px solid #282828;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-header h2 {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #1DB954;
+}
+
+.close-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: #282828;
+  color: #ffffff;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.cart-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.empty-msg {
+  text-align: center;
+  color: #727272;
+  margin-top: 40px;
+  font-size: 0.85rem;
+}
+
+.cart-item {
+  background: #242424;
+  padding: 10px 12px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-item-details h4 {
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.cart-item-details p {
+  font-size: 0.75rem;
+  color: #1DB954;
+  font-weight: 700;
+}
+
+.qty-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.qty-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: none;
+  background-color: #333333;
+  color: #ffffff;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.cart-footer {
+  padding: 16px 20px 26px 20px;
+  background-color: #121212;
+  border-top: 1px solid #282828;
+}
+
+.field-box {
+  margin-bottom: 10px;
+}
+
+.field-box label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: #b3b3b3;
+}
+
+.field-box input,
+.field-box select,
+.field-box textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #333333;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.8rem;
+  background-color: #242424;
+  color: #ffffff;
+}
+
+.summary-box {
+  margin: 12px 0;
+  padding-top: 8px;
+  border-top: 1px dashed #333333;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sum-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: #b3b3b3;
+}
+
+.grand-total {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #1DB954;
+  margin-top: 4px;
+}
+
+.wa-checkout-btn {
+  width: 100%;
+  background-color: #1DB954;
+  color: #000000;
+  border: none;
+  padding: 12px;
+  border-radius: 50px;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+/* =========================================
+   PAPARAN KHAS TELEFON (COMPACT 3-KOLUM)
+   ========================================= */
+@media (max-width: 820px) {
+  .page-wrapper {
+    padding: 16px 14px 28px 14px;
+  }
+
+  .top-section {
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+
+  .left-header-group {
+    display: contents;
+  }
+
+  /* 1. Baris Logo Tengah + Cart Kanan */
+  .brand-row {
+    order: 1;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .mobile-spacer {
+    display: block;
+    width: 40px;
+  }
+
+  .mobile-cart-btn {
+    display: flex;
+    width: 40px;
+    height: 40px;
+    position: relative;
+  }
+
+  .desktop-cart-btn {
+    display: none;
+  }
+
+  .cat-logo-circle {
+    width: 42px;
+    height: 42px;
+  }
+
+  .brand-script {
+    font-size: 1.8rem;
+  }
+
+  /* 2. Hero Banner di Tengah */
+  .right-banner-group {
+    order: 2;
+    width: 100%;
+  }
+
+  .hero-banner {
+    padding: 16px 14px;
+    border-radius: 16px;
+  }
+
+  .hero-title {
+    font-size: 1.05rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.66rem;
+    max-width: 195px;
+  }
+
+  .hero-image {
+    width: 112px;
+    height: 94px;
+    border-radius: 12px;
+  }
+
+  /* 3. 5 Kategori Bulat di Bawah Banner */
+  .category-bar {
+    order: 3;
+    width: 100%;
+    justify-content: space-between;
+    gap: 4px;
+  }
+
+  .icon-ring {
+    width: 48px;
+    height: 48px;
+    font-size: 1.25rem;
+  }
+
+  .cat-circle-btn span {
+    font-size: 0.58rem;
+    line-height: 1.15;
+  }
+
+  /* Grid Menu 3 Kolum Kompak (Tidak Besar di Phone) */
+  .menu-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .menu-card {
+    padding: 6px;
+    border-radius: 11px;
+  }
+
+  .card-thumb {
+    border-radius: 8px;
+    margin-bottom: 6px;
+  }
+
+  .card-name {
+    font-size: 0.68rem;
+    margin-bottom: 6px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .card-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .card-price {
+    font-size: 0.68rem;
+  }
+
+  .card-add-btn {
+    width: 100%;
+    padding: 4px 0;
+    font-size: 0.64rem;
+    text-align: center;
+  }
+
+  /* Footer Bertingkat di Phone */
+  .main-footer {
+    padding: 12px 14px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    font-size: 0.74rem;
+  }
+}
